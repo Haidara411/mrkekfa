@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* الألوان العامة والوضع الليلي (Default) */
+        /* الألوان العامة والوضع الداكن */
         :root {
             --bg-base: #090d16;
             --header-bg: rgba(9, 13, 22, 0.75);
@@ -51,7 +51,7 @@
             --speed: 0.3s;
         }
 
-        /* متغيرات الوضع الفاتح (Light Mode) */
+        /* متغيرات الوضع الفاتح */
         [data-theme="light"] {
             --bg-base: #f8fafc;
             --header-bg: rgba(255, 255, 255, 0.8);
@@ -147,7 +147,6 @@
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
         }
 
-        /* أزرار رأس الصفحة (اللغة والمظهر) */
         .icon-btn, .lang-switch-btn {
             display: flex;
             align-items: center;
@@ -182,7 +181,7 @@
             transform: translateY(-1px);
         }
 
-        /* المحتوى والصفحات */
+        /* Pages */
         main {
             flex: 1;
             width: 100%;
@@ -209,7 +208,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* نمط البطاقة المستوحى من التصميم (خاص بالحاسوب Desktop) */
+        /* Desktop Card Layout */
         .sop-desktop-card {
             width: 100%;
             max-width: 1060px;
@@ -272,7 +271,6 @@
             font-weight: 300;
         }
 
-        /* الأزرار التفاعلية */
         .sop-buttons-row {
             display: flex;
             align-items: center;
@@ -336,7 +334,6 @@
             box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
         }
 
-        /* جانب الصورة */
         .sop-avatar-side {
             flex: 0.95;
             display: flex;
@@ -377,7 +374,7 @@
             50% { transform: translateY(-7px); }
         }
 
-        /* استجابة الهاتف المحمول */
+        /* Mobile Layout */
         @media (max-width: 992px) {
             .sop-desktop-card {
                 background: transparent;
@@ -419,7 +416,7 @@
             }
         }
 
-        /* صفحات الإنجازات والتواصل */
+        /* Achievements & Contact */
         .section-title {
             font-size: 30px;
             font-weight: 800;
@@ -493,7 +490,6 @@
         .card h3 { font-size: 18px; color: var(--text-main); font-weight: 700; }
         .card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.6; }
 
-        /* صفحة التواصل */
         .contact-content {
             display: flex;
             flex-direction: column;
@@ -541,7 +537,7 @@
         .social-btn.instagram:hover { background: rgba(236, 72, 153, 0.12); border-color: #ec4899; color: #ec4899; }
         .social-btn.facebook:hover { background: rgba(59, 130, 246, 0.12); border-color: #3b82f6; color: #3b82f6; }
 
-        /* شريط التنقل السفلي */
+        /* Dock */
         .bottom-nav-dock {
             position: fixed;
             bottom: 24px;
@@ -616,12 +612,10 @@
         </div>
         
         <div class="header-right">
-            <!-- زر تبديل الوضع الفاتح / الداكن -->
             <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
                 <i class="fa-solid fa-sun" id="themeIcon"></i>
             </button>
 
-            <!-- زر تبديل اللغة -->
             <button class="lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
                 <i class="fa-solid fa-globe"></i>
                 <span id="langBtnText">English</span>
@@ -634,10 +628,9 @@
     </header>
 
     <main>
-        <!-- الصفحة 1: الرئيسية -->
+        <!-- الرئيسية -->
         <section id="home" class="page hero active" role="tabpanel">
             <div class="sop-desktop-card">
-                
                 <div class="sop-text-side">
                     <div class="sop-greeting" data-i18n="sopGreeting">مرحباً، أنا</div>
                     
@@ -675,11 +668,10 @@
                              onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect width=\'200\' height=\'200\' fill=\'%231f2737\'/%3E%3Ccircle cx=\'100\' cy=\'75\' r=\'40\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3Cpath d=\'M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3C/svg%3E';">
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- الصفحة 2: الإنجازات -->
+        <!-- الإنجازات -->
         <section id="achievements" class="page achievements" role="tabpanel">
             <h2 class="section-title">
                 <i class="fa-solid fa-trophy"></i> 
@@ -743,7 +735,7 @@
             </div>
         </section>
 
-        <!-- الصفحة 3: تواصل معي -->
+        <!-- تواصل معي -->
         <section id="contact" class="page contact" role="tabpanel">
             <div class="contact-content">
                 <h2 class="section-title">
@@ -800,12 +792,34 @@
             }
         };
 
-        /* إدارة المظهر (Light / Dark Mode) */
-        let currentTheme = safeStorage.get('site_theme', 'dark');
+        /* اكتشاف المظهر تلقائياً من المتصفح / النظام */
+        function detectInitialTheme() {
+            const saved = safeStorage.get('site_theme', null);
+            if (saved) return saved;
 
-        function applyTheme(theme) {
+            // فحص إعدادات المتصفح/النظام
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                return 'light';
+            }
+            return 'dark';
+        }
+
+        /* اكتشاف اللغة تلقائياً من المتصفح */
+        function detectInitialLanguage() {
+            const saved = safeStorage.get('site_lang', null);
+            if (saved) return saved;
+
+            // قراءة لغة المتصفح الأساسية
+            const browserLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
+            return browserLang.startsWith('ar') ? 'ar' : 'en';
+        }
+
+        let currentTheme = detectInitialTheme();
+        let currentLang = detectInitialLanguage();
+
+        function applyTheme(theme, save = false) {
             currentTheme = theme;
-            safeStorage.set('site_theme', theme);
+            if (save) safeStorage.set('site_theme', theme);
             document.documentElement.setAttribute('data-theme', theme);
 
             const themeIcon = document.getElementById('themeIcon');
@@ -819,10 +833,9 @@
         }
 
         function toggleTheme() {
-            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
         }
 
-        /* إدارة اللغات */
         const translations = {
             ar: {
                 logo: 'mr<span>kekfa</span>',
@@ -888,11 +901,9 @@
             }
         };
 
-        let currentLang = safeStorage.get('site_lang', 'ar');
-
-        function applyLanguage(lang) {
+        function applyLanguage(lang, save = false) {
             currentLang = lang;
-            safeStorage.set('site_lang', lang);
+            if (save) safeStorage.set('site_lang', lang);
 
             const isAr = lang === 'ar';
             document.documentElement.lang = lang;
@@ -913,10 +924,9 @@
         }
 
         function toggleLanguage() {
-            applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+            applyLanguage(currentLang === 'ar' ? 'en' : 'ar', true);
         }
 
-        /* إدارة التنقل */
         function switchPage(pageId) {
             const validPages = ['home', 'achievements', 'contact'];
             const targetId = validPages.includes(pageId) ? pageId : 'home';
@@ -934,7 +944,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* مستمعات الأحداث */
+        /* الاستماع لأي تغيير يجريه المستخدم في مظهر نظامه بالوقت الفعلي */
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                if (!safeStorage.get('site_theme', null)) {
+                    applyTheme(e.matches ? 'light' : 'dark', false);
+                }
+            });
+        }
+
         document.addEventListener('click', (e) => {
             const navBtn = e.target.closest('[data-nav]');
             if (navBtn) {
@@ -961,8 +979,8 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            applyTheme(currentTheme);
-            applyLanguage(currentLang);
+            applyTheme(currentTheme, false);
+            applyLanguage(currentLang, false);
             const initialHash = window.location.hash.replace('#', '');
             switchPage(initialHash || 'home');
         });
