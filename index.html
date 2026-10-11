@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,26 +24,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* الألوان العامة والوضع الليلي (Default) */
         :root {
             --bg-base: #090d16;
+            --header-bg: rgba(9, 13, 22, 0.75);
             --bg-card: rgba(22, 30, 49, 0.75);
             --bg-card-hover: rgba(30, 41, 66, 0.9);
+            --sop-card-bg: #141923;
+            --sop-disk-bg: #1f2737;
+            --sop-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             --primary: #38bdf8;
             --accent: #818cf8;
             --btn-blue: #2563eb;
             --btn-blue-glow: rgba(37, 99, 235, 0.45);
+            --btn-sec-bg: rgba(255, 255, 255, 0.05);
+            --btn-sec-text: #e2e8f0;
+            --btn-sec-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-glass: rgba(255, 255, 255, 0.08);
             --border-highlight: rgba(56, 189, 248, 0.4);
+            --dock-bg: rgba(15, 23, 42, 0.88);
+            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+            --grid-line: rgba(255, 255, 255, 0.02);
             --transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
             --speed: 0.3s;
+        }
+
+        /* متغيرات الوضع الفاتح (Light Mode) */
+        [data-theme="light"] {
+            --bg-base: #f8fafc;
+            --header-bg: rgba(255, 255, 255, 0.8);
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-card-hover: #ffffff;
+            --sop-card-bg: #ffffff;
+            --sop-disk-bg: #e2e8f0;
+            --sop-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            --primary: #0284c7;
+            --accent: #6366f1;
+            --btn-blue: #0284c7;
+            --btn-blue-glow: rgba(2, 132, 199, 0.35);
+            --btn-sec-bg: #f1f5f9;
+            --btn-sec-text: #1e293b;
+            --btn-sec-border: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --border-highlight: rgba(2, 132, 199, 0.4);
+            --dock-bg: rgba(255, 255, 255, 0.9);
+            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.1);
+            --grid-line: rgba(0, 0, 0, 0.03);
         }
 
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color var(--speed), border-color var(--speed), color var(--speed);
         }
 
         body {
@@ -58,8 +95,8 @@
             background-image: 
                 radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
                 radial-gradient(circle at 15% 90%, rgba(129, 140, 248, 0.08) 0%, transparent 45%),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
             -webkit-tap-highlight-color: transparent;
         }
@@ -78,7 +115,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(9, 13, 22, 0.75);
+            background: var(--header-bg);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-glass);
             position: sticky;
@@ -89,7 +126,7 @@
         .header-left, .header-right {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo {
@@ -110,24 +147,36 @@
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
         }
 
-        .lang-switch-btn {
+        /* أزرار رأس الصفحة (اللغة والمظهر) */
+        .icon-btn, .lang-switch-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.04);
+            justify-content: center;
+            background: var(--btn-sec-bg);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            padding: 7px 16px;
             border-radius: 99px;
             cursor: pointer;
-            font-size: 13px;
             font-weight: 600;
             transition: all var(--speed);
+        }
+
+        .lang-switch-btn {
+            gap: 8px;
+            padding: 7px 16px;
+            font-size: 13px;
             font-family: 'Poppins', sans-serif;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(56, 189, 248, 0.12);
+        .theme-toggle-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 15px;
+            border-radius: 50%;
+            padding: 0;
+        }
+
+        .icon-btn:hover, .lang-switch-btn:hover, .theme-toggle-btn:hover {
             border-color: var(--border-highlight);
             color: var(--primary);
             transform: translateY(-1px);
@@ -160,15 +209,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ----------------------------------------------------------- */
-        /* نمط البطاقة المستوحى من التصميم (خاص بالحاسوب Desktop)       */
-        /* ----------------------------------------------------------- */
+        /* نمط البطاقة المستوحى من التصميم (خاص بالحاسوب Desktop) */
         .sop-desktop-card {
             width: 100%;
             max-width: 1060px;
             margin: auto;
-            background: #141923;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: var(--sop-card-bg);
+            border: 1px solid var(--border-glass);
             border-radius: 28px;
             padding: 55px 65px;
             display: flex;
@@ -176,7 +223,7 @@
             justify-content: space-between;
             gap: 40px;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            box-shadow: var(--sop-card-shadow);
         }
 
         .sop-text-side {
@@ -192,7 +239,7 @@
         }
 
         .sop-greeting {
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 28px;
             font-weight: 500;
             margin-bottom: 6px;
@@ -202,7 +249,7 @@
         .sop-name {
             font-size: clamp(48px, 5.5vw, 68px);
             font-weight: 900;
-            color: #ffffff;
+            color: var(--text-main);
             line-height: 1.1;
             margin-bottom: 18px;
             letter-spacing: -1px;
@@ -210,7 +257,7 @@
         }
 
         .sop-subroles {
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 19px;
             font-weight: 500;
             margin-bottom: 35px;
@@ -221,7 +268,7 @@
         }
 
         .sop-subroles span.divider {
-            color: #475569;
+            color: var(--border-glass);
             font-weight: 300;
         }
 
@@ -255,31 +302,28 @@
         }
 
         .sop-btn-primary:hover {
-            background-color: #1d4ed8;
-            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.65);
+            box-shadow: 0 12px 30px var(--btn-blue-glow);
             transform: translateY(-2px);
+            filter: brightness(1.1);
         }
 
         .sop-btn-secondary {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #e2e8f0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--btn-sec-bg);
+            color: var(--btn-sec-text);
+            border: 1px solid var(--btn-sec-border);
         }
 
         .sop-btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--border-highlight);
             transform: translateY(-2px);
         }
 
-        /* بادج التوقيع السفلي كالتصميم المرفق */
         .sop-footer-badge {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 13.5px;
-            color: #64748b;
+            color: var(--text-muted);
             font-weight: 600;
         }
 
@@ -287,12 +331,12 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: #f97316; /* النقطة البرتقالية تماماً كالتصميم */
+            background-color: #f97316;
             display: inline-block;
             box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
         }
 
-        /* الجانب الخاص بالصورة */
+        /* جانب الصورة */
         .sop-avatar-side {
             flex: 0.95;
             display: flex;
@@ -300,19 +344,18 @@
             justify-content: center;
         }
 
-        /* الدائرة الداكنة المدمجة خلف الشخصية */
         .sop-avatar-disk {
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: #1f2737;
+            background: var(--sop-disk-bg);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-glass);
             animation: floatSlow 6s ease-in-out infinite;
         }
 
@@ -334,9 +377,7 @@
             50% { transform: translateY(-7px); }
         }
 
-        /* ----------------------------------------------------------- */
-        /* استجابة الهاتف المحمول (مظهر عادي تقليدي وطبيعي بالكامل)      */
-        /* ----------------------------------------------------------- */
+        /* استجابة الهاتف المحمول */
         @media (max-width: 992px) {
             .sop-desktop-card {
                 background: transparent;
@@ -354,14 +395,8 @@
                 width: 100%;
             }
 
-            .sop-greeting {
-                font-size: 20px;
-            }
-
-            .sop-name {
-                font-size: 40px;
-                margin-bottom: 12px;
-            }
+            .sop-greeting { font-size: 20px; }
+            .sop-name { font-size: 40px; margin-bottom: 12px; }
 
             .sop-subroles {
                 font-size: 15px;
@@ -376,9 +411,7 @@
                 width: 100%;
             }
 
-            .sop-footer-badge {
-                justify-content: center;
-            }
+            .sop-footer-badge { justify-content: center; }
 
             .sop-avatar-disk {
                 width: 230px;
@@ -386,7 +419,7 @@
             }
         }
 
-        /* باقي صفحات الموقع (الإنجازات والتواصل) */
+        /* صفحات الإنجازات والتواصل */
         .section-title {
             font-size: 30px;
             font-weight: 800;
@@ -428,7 +461,7 @@
             transform: translateY(-4px);
             background: var(--bg-card-hover);
             border-color: var(--border-highlight);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
 
         .card-meta {
@@ -441,7 +474,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
             color: var(--text-muted);
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .card-icon {
@@ -500,15 +533,15 @@
 
         .social-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
         }
 
-        .social-btn.github:hover { background: #1e293b; border-color: #94a3b8; }
-        .social-btn.youtube:hover { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; }
-        .social-btn.instagram:hover { background: rgba(236, 72, 153, 0.15); border-color: #ec4899; color: #f472b6; }
-        .social-btn.facebook:hover { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: #60a5fa; }
+        .social-btn.github:hover { border-color: var(--primary); }
+        .social-btn.youtube:hover { background: rgba(239, 68, 68, 0.12); border-color: #ef4444; color: #ef4444; }
+        .social-btn.instagram:hover { background: rgba(236, 72, 153, 0.12); border-color: #ec4899; color: #ec4899; }
+        .social-btn.facebook:hover { background: rgba(59, 130, 246, 0.12); border-color: #3b82f6; color: #3b82f6; }
 
-        /* شريط التنقل السفلي Dock */
+        /* شريط التنقل السفلي */
         .bottom-nav-dock {
             position: fixed;
             bottom: 24px;
@@ -517,12 +550,12 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: rgba(15, 23, 42, 0.88);
+            background: var(--dock-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-glass);
             border-radius: 99px;
             padding: 6px 8px;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+            box-shadow: var(--dock-shadow);
             z-index: 1000;
         }
 
@@ -544,12 +577,12 @@
 
         .nav-dock-btn:hover {
             color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--btn-sec-bg);
         }
 
         .nav-dock-btn.active {
             background: var(--primary);
-            color: #090d16;
+            color: #ffffff;
             box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
         }
 
@@ -583,28 +616,34 @@
         </div>
         
         <div class="header-right">
+            <!-- زر تبديل الوضع الفاتح / الداكن -->
+            <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
+                <i class="fa-solid fa-sun" id="themeIcon"></i>
+            </button>
+
+            <!-- زر تبديل اللغة -->
             <button class="lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
                 <i class="fa-solid fa-globe"></i>
                 <span id="langBtnText">English</span>
             </button>
-            <div class="tag en-font" style="font-size: 12px; padding: 4px 10px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-glass);">
+
+            <div class="tag en-font" style="font-size: 12px; padding: 5px 12px; background: var(--btn-sec-bg); border-radius: 8px; border: 1px solid var(--border-glass);">
                 <i class="fa-solid fa-code"></i> Dev
             </div>
         </div>
     </header>
 
     <main>
-        <!-- الصفحة 1: الرئيسية بنمط البطاقة للكمبيوتر وعادية للموبايل -->
+        <!-- الصفحة 1: الرئيسية -->
         <section id="home" class="page hero active" role="tabpanel">
             <div class="sop-desktop-card">
                 
-                <!-- الجانب النصي -->
                 <div class="sop-text-side">
                     <div class="sop-greeting" data-i18n="sopGreeting">مرحباً، أنا</div>
                     
                     <h1 class="sop-name" data-i18n="sopName">حيدرة</h1>
                     
-                    <div class="sop-subroles" id="subrolesContainer">
+                    <div class="sop-subroles">
                         <span data-i18n="role1">مبرمج وتقني</span>
                         <span class="divider">|</span>
                         <span data-i18n="role2">أنظمة تشغيل</span>
@@ -627,7 +666,6 @@
                     </div>
                 </div>
 
-                <!-- الجانب الخاص بالصورة مع الدائرة الداكنة المدمجة -->
                 <div class="sop-avatar-side">
                     <div class="sop-avatar-disk">
                         <img src="Untitled25_20260814222437.jpg" 
@@ -762,6 +800,29 @@
             }
         };
 
+        /* إدارة المظهر (Light / Dark Mode) */
+        let currentTheme = safeStorage.get('site_theme', 'dark');
+
+        function applyTheme(theme) {
+            currentTheme = theme;
+            safeStorage.set('site_theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+
+            const themeIcon = document.getElementById('themeIcon');
+            if (theme === 'light') {
+                themeIcon.className = 'fa-solid fa-moon';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8fafc');
+            } else {
+                themeIcon.className = 'fa-solid fa-sun';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#090d16');
+            }
+        }
+
+        function toggleTheme() {
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        /* إدارة اللغات */
         const translations = {
             ar: {
                 logo: 'mr<span>kekfa</span>',
@@ -855,6 +916,7 @@
             applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
         }
 
+        /* إدارة التنقل */
         function switchPage(pageId) {
             const validPages = ['home', 'achievements', 'contact'];
             const targetId = validPages.includes(pageId) ? pageId : 'home';
@@ -872,6 +934,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        /* مستمعات الأحداث */
         document.addEventListener('click', (e) => {
             const navBtn = e.target.closest('[data-nav]');
             if (navBtn) {
@@ -883,6 +946,12 @@
 
             if (e.target.closest('#langToggleBtn')) {
                 toggleLanguage();
+                return;
+            }
+
+            if (e.target.closest('#themeToggleBtn')) {
+                toggleTheme();
+                return;
             }
         });
 
@@ -892,6 +961,7 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
+            applyTheme(currentTheme);
             applyLanguage(currentLang);
             const initialHash = window.location.hash.replace('#', '');
             switchPage(initialHash || 'home');
