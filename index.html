@@ -3,64 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حيدرة عمران | mrkekfa</title>
+    <meta name="theme-color" content="#090d16">
     
-    <!-- خطوط جوجل (Cairo للعربية و Poppins للإنجليزية) -->
+    <!-- أيقونة التاب (SVG Favicon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230b1120'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3Cdefs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2338bdf8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2338bdf8'/%3E%3C/svg%3E">
+
+    <!-- SEO & Social Cards -->
+    <title id="siteTitle">حيدرة عمران | mrkekfa</title>
+    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة، أنظمة تشغيل، شبكات وصيانة هاردوير.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="حيدرة عمران | mrkekfa">
+    <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
+    <meta property="og:image" content="Untitled25_20260814222437.jpg">
+
+    <!-- Preconnects & الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- مكتبة الأيقونات Font Awesome -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
+            --bg-base: #090d16;
+            --bg-card: rgba(22, 30, 49, 0.75);
+            --bg-card-hover: rgba(30, 41, 66, 0.9);
             --primary: #38bdf8;
-            --primary-glow: rgba(56, 189, 248, 0.35);
+            --accent: #818cf8;
+            --btn-blue: #2563eb;
+            --btn-blue-glow: rgba(37, 99, 235, 0.45);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(56, 189, 248, 0.4);
+            --transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
+            --speed: 0.3s;
         }
 
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-base);
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: radial-gradient(circle at 100% 0%, rgba(56,189,248,0.08) 0%, transparent 40%),
-                              radial-gradient(circle at 0% 100%, rgba(56,189,248,0.06) 0%, transparent 40%);
+            background-image: 
+                radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 15% 90%, rgba(129, 140, 248, 0.08) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body.lang-en {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
         }
 
-        .en-font {
-            font-family: 'Poppins', sans-serif;
-        }
+        .en-font { font-family: 'Poppins', sans-serif; }
+        .code-font { font-family: 'JetBrains Mono', monospace; }
 
+        /* Header */
         header {
             width: 100%;
             padding: 16px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(9, 13, 22, 0.75);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -73,49 +93,47 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 900;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--text-main);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 2px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'JetBrains Mono', monospace;
             direction: ltr !important;
-            unicode-bidi: isolate;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
             color: var(--primary);
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
         }
 
         .lang-switch-btn {
             display: flex;
             align-items: center;
-            gap: 7px;
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
             color: var(--text-main);
-            padding: 6px 14px;
-            border-radius: 30px;
+            padding: 7px 16px;
+            border-radius: 99px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 700;
-            transition: var(--transition);
+            font-size: 13px;
+            font-weight: 600;
+            transition: all var(--speed);
             font-family: 'Poppins', sans-serif;
         }
 
         .lang-switch-btn:hover {
-            background: rgba(56, 189, 248, 0.2);
-            box-shadow: 0 0 15px var(--primary-glow);
-            transform: translateY(-2px);
-        }
-
-        .lang-switch-btn i {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-highlight);
             color: var(--primary);
-            font-size: 14px;
+            transform: translateY(-1px);
         }
 
+        /* المحتوى والصفحات */
         main {
             flex: 1;
             width: 100%;
@@ -125,8 +143,6 @@
         .page {
             display: none;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
             width: 100%;
             min-height: calc(100vh - 160px);
             padding: 40px 8% 130px;
@@ -136,117 +152,245 @@
             display: flex;
             flex-direction: column;
             opacity: 1;
-            transform: translateY(0);
-            animation: pageFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: pageFadeIn 0.35s var(--transition-timing) forwards;
         }
 
         @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(25px) scale(0.99);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero {
+        /* ----------------------------------------------------------- */
+        /* نمط البطاقة المستوحى من التصميم (خاص بالحاسوب Desktop)       */
+        /* ----------------------------------------------------------- */
+        .sop-desktop-card {
+            width: 100%;
+            max-width: 1060px;
+            margin: auto;
+            background: #141923;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 28px;
+            padding: 55px 65px;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
-            flex-direction: row;
+            gap: 40px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
 
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text .greeting {
-            color: var(--primary);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(38px, 5vw, 62px);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        .hero-text h1 span {
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary-glow);
-        }
-
-        .hero-bio {
-            font-size: 18px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        .tags {
+        .sop-text-side {
+            flex: 1.2;
             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        body[dir="rtl"] .sop-text-side {
+            text-align: right;
+            align-items: flex-start;
+        }
+
+        .sop-greeting {
+            color: #94a3b8;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .sop-name {
+            font-size: clamp(48px, 5.5vw, 68px);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .sop-subroles {
+            color: #94a3b8;
+            font-size: 19px;
+            font-weight: 500;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 35px;
         }
 
-        .tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
-            padding: 8px 18px;
-            border-radius: 50px;
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            font-weight: 600;
+        .sop-subroles span.divider {
+            color: #475569;
+            font-weight: 300;
+        }
+
+        /* الأزرار التفاعلية */
+        .sop-buttons-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 45px;
+        }
+
+        .sop-btn {
+            font-family: inherit;
             font-size: 15px;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: all var(--speed) var(--transition-timing);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+        }
+
+        .sop-btn-primary {
+            background-color: var(--btn-blue);
+            color: #ffffff;
+            box-shadow: 0 8px 24px var(--btn-blue-glow);
+        }
+
+        .sop-btn-primary:hover {
+            background-color: #1d4ed8;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.65);
+            transform: translateY(-2px);
+        }
+
+        .sop-btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sop-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* بادج التوقيع السفلي كالتصميم المرفق */
+        .sop-footer-badge {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 13.5px;
+            color: #64748b;
+            font-weight: 600;
         }
 
-        .brand-handle {
-            direction: ltr !important;
-            unicode-bidi: isolate;
-            display: inline-flex;
-            align-items: center;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .hero-image-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-img-wrapper {
-            position: relative;
-            width: 330px;
-            height: 330px;
+        .sop-status-dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            padding: 10px;
-            background: linear-gradient(45deg, var(--primary), transparent);
-            box-shadow: 0 0 45px var(--primary-glow);
-            animation: float 6s ease-in-out infinite;
+            background-color: #f97316; /* النقطة البرتقالية تماماً كالتصميم */
+            display: inline-block;
+            box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
         }
 
-        .profile-img-wrapper img {
+        /* الجانب الخاص بالصورة */
+        .sop-avatar-side {
+            flex: 0.95;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* الدائرة الداكنة المدمجة خلف الشخصية */
+        .sop-avatar-disk {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #1f2737;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .sop-avatar-disk img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
             border-radius: 50%;
-            border: 4px solid var(--bg-dark);
+            transition: transform 0.4s var(--transition-timing);
         }
 
+        .sop-avatar-disk:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        /* ----------------------------------------------------------- */
+        /* استجابة الهاتف المحمول (مظهر عادي تقليدي وطبيعي بالكامل)      */
+        /* ----------------------------------------------------------- */
+        @media (max-width: 992px) {
+            .sop-desktop-card {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 10px 0 0;
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .sop-text-side {
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .sop-greeting {
+                font-size: 20px;
+            }
+
+            .sop-name {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .sop-subroles {
+                font-size: 15px;
+                justify-content: center;
+                margin-bottom: 25px;
+                gap: 8px;
+            }
+
+            .sop-buttons-row {
+                justify-content: center;
+                margin-bottom: 30px;
+                width: 100%;
+            }
+
+            .sop-footer-badge {
+                justify-content: center;
+            }
+
+            .sop-avatar-disk {
+                width: 230px;
+                height: 230px;
+            }
+        }
+
+        /* باقي صفحات الموقع (الإنجازات والتواصل) */
         .section-title {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 800;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -254,129 +398,117 @@
 
         .section-title i {
             color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 18px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             width: 100%;
         }
 
         .card {
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 30px 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 26px 22px;
+            transition: all var(--speed);
             display: flex;
             flex-direction: column;
-            gap: 14px;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; width: 100%; height: 4px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: var(--transition);
-        }
-
-        body.lang-en .card::before {
-            right: auto;
-            left: 0;
-            transform-origin: left;
+            gap: 12px;
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            border-color: rgba(56, 189, 248, 0.35);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-highlight);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .card:hover::before {
-            transform: scaleX(1);
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            opacity: 0.6;
         }
 
         .card-icon {
-            width: 55px;
-            height: 55px;
-            background: rgba(56, 189, 248, 0.12);
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
+            font-size: 20px;
             color: var(--primary);
         }
 
-        .card h3 {
-            font-size: 20px;
-            color: var(--text-main);
-            font-weight: 700;
-        }
+        .card h3 { font-size: 18px; color: var(--text-main); font-weight: 700; }
+        .card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.6; }
 
-        .card p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
+        /* صفحة التواصل */
         .contact-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
-            flex: 1;
             margin: auto;
-            max-width: 800px;
+            max-width: 700px;
         }
 
         .contact-text {
             color: var(--text-muted);
-            font-size: 18px;
-            margin-bottom: 40px;
-            max-width: 580px;
+            font-size: 17px;
+            margin-bottom: 35px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 14px;
             flex-wrap: wrap;
-            width: 100%;
         }
 
         .social-btn {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 34px;
+            gap: 10px;
+            padding: 14px 28px;
             border-radius: 14px;
             text-decoration: none;
             color: var(--text-main);
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 600;
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
+            border: 1px solid var(--border-glass);
+            transition: all var(--speed);
         }
 
-        .social-btn i {
-            font-size: 22px;
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .social-btn.github:hover { background: #24292e; border-color: #f0f6fc; box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); transform: translateY(-5px); }
-        .social-btn.youtube:hover { background: #ff0000; border-color: #ff0000; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.35); transform: translateY(-5px); }
-        .social-btn.instagram:hover { background: #E1306C; border-color: #E1306C; box-shadow: 0 10px 25px rgba(225, 48, 108, 0.35); transform: translateY(-5px); }
-        .social-btn.facebook:hover { background: #1877F2; border-color: #1877F2; box-shadow: 0 10px 25px rgba(24, 119, 242, 0.35); transform: translateY(-5px); }
+        .social-btn.github:hover { background: #1e293b; border-color: #94a3b8; }
+        .social-btn.youtube:hover { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #f87171; }
+        .social-btn.instagram:hover { background: rgba(236, 72, 153, 0.15); border-color: #ec4899; color: #f472b6; }
+        .social-btn.facebook:hover { background: rgba(59, 130, 246, 0.15); border-color: #3b82f6; color: #60a5fa; }
 
+        /* شريط التنقل السفلي Dock */
         .bottom-nav-dock {
             position: fixed;
             bottom: 24px;
@@ -384,14 +516,13 @@
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 50px;
-            padding: 8px 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px var(--primary-glow);
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px;
+            padding: 6px 8px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
             z-index: 1000;
         }
 
@@ -399,22 +530,16 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
-            border-radius: 40px;
+            padding: 9px 20px;
+            border-radius: 99px;
             border: none;
             background: transparent;
             color: var(--text-muted);
             font-family: inherit;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .nav-dock-btn i {
-            font-size: 16px;
-            transition: var(--transition);
+            transition: all var(--speed);
         }
 
         .nav-dock-btn:hover {
@@ -424,36 +549,14 @@
 
         .nav-dock-btn.active {
             background: var(--primary);
-            color: #0f172a;
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        .nav-dock-btn.active i {
-            transform: scale(1.15);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @media (max-width: 992px) {
-            .hero {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .hero-bio { margin-inline: auto; }
-            .tags { justify-content: center; }
-            .profile-img-wrapper { width: 260px; height: 260px; }
+            color: #090d16;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
         }
 
         @media (max-width: 600px) {
             .bottom-nav-dock {
-                bottom: 15px;
-                padding: 6px 8px;
-                gap: 4px;
-                width: calc(100% - 30px);
+                bottom: 14px;
+                width: calc(100% - 24px);
                 justify-content: space-around;
             }
             .nav-dock-btn {
@@ -462,8 +565,13 @@
                 flex: 1;
                 justify-content: center;
             }
-            .hero-text h1 { font-size: 32px; }
-            .social-btn { width: 100%; justify-content: center; }
+            .sop-buttons-row {
+                flex-direction: column;
+                width: 100%;
+            }
+            .sop-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -471,116 +579,154 @@
 
     <header>
         <div class="header-left">
-            <a href="javascript:void(0)" class="logo" id="logoText" onclick="switchPage('home')">mr<span>kekfa</span></a>
+            <a href="#home" class="logo" id="logoText" data-nav="home">mr<span>kekfa</span></a>
         </div>
         
         <div class="header-right">
-            <button class="lang-switch-btn" id="langToggleBtn" onclick="toggleLanguage()">
+            <button class="lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
                 <i class="fa-solid fa-globe"></i>
                 <span id="langBtnText">English</span>
             </button>
-            <div class="tag en-font" style="font-size: 13px; padding: 4px 12px; margin-bottom: 0;">
-                <i class="fa-solid fa-code"></i> Developer
+            <div class="tag en-font" style="font-size: 12px; padding: 4px 10px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-glass);">
+                <i class="fa-solid fa-code"></i> Dev
             </div>
         </div>
     </header>
 
     <main>
-        <!-- الصفحة 1: الرئيسية -->
-        <section id="home" class="page hero active">
-            <div class="hero-text">
-                <span class="greeting" data-i18n="greeting">مرحباً، أنا</span>
-                <h1 data-i18n="heroName">حيدرة <span>عمران</span></h1>
+        <!-- الصفحة 1: الرئيسية بنمط البطاقة للكمبيوتر وعادية للموبايل -->
+        <section id="home" class="page hero active" role="tabpanel">
+            <div class="sop-desktop-card">
                 
-                <div class="tags">
-                    <div class="tag brand-handle" id="userHandleTag">@mrkekfa</div>
-                    <div class="tag"><i class="fa-solid fa-bolt"></i> <span data-i18n="ageTag">العمر: 13 سنة</span></div>
-                    <div class="tag"><i class="fa-solid fa-terminal"></i> <span data-i18n="roleTag">مبرمج وتقني</span></div>
+                <!-- الجانب النصي -->
+                <div class="sop-text-side">
+                    <div class="sop-greeting" data-i18n="sopGreeting">مرحباً، أنا</div>
+                    
+                    <h1 class="sop-name" data-i18n="sopName">حيدرة</h1>
+                    
+                    <div class="sop-subroles" id="subrolesContainer">
+                        <span data-i18n="role1">مبرمج وتقني</span>
+                        <span class="divider">|</span>
+                        <span data-i18n="role2">أنظمة تشغيل</span>
+                        <span class="divider">|</span>
+                        <span data-i18n="role3">صيانة هاردوير</span>
+                    </div>
+
+                    <div class="sop-buttons-row">
+                        <button class="sop-btn sop-btn-primary" data-nav="achievements" data-i18n="btnProjects">
+                            تصفح الإنجازات
+                        </button>
+                        <button class="sop-btn sop-btn-secondary" data-nav="contact" data-i18n="btnContact">
+                            تواصل معي
+                        </button>
+                    </div>
+
+                    <div class="sop-footer-badge">
+                        <span class="sop-status-dot"></span>
+                        <span data-i18n="sopFooter">صُنع بواسطة حيدرة</span>
+                    </div>
                 </div>
 
-                <p class="hero-bio" data-i18n="heroBio">
-                    شغوف بالتكنولوجيا، البرمجة، وحل المشاكل التقنية. أستكشف أنظمة التشغيل والشبكات وأبني مهاراتي في عالم البرمجيات والهاردوير منذ سن مبكرة، وأسعى دائماً لتطوير قدراتي لمستويات احترافية.
-                </p>
-            </div>
-
-            <div class="hero-image-container">
-                <div class="profile-img-wrapper">
-                    <img src="Untitled25_20260814222437.jpg" alt="Haidara Omran" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=mrkekfa';">
+                <!-- الجانب الخاص بالصورة مع الدائرة الداكنة المدمجة -->
+                <div class="sop-avatar-side">
+                    <div class="sop-avatar-disk">
+                        <img src="Untitled25_20260814222437.jpg" 
+                             alt="Haidara Omran Avatar" 
+                             decoding="async" 
+                             fetchpriority="high"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect width=\'200\' height=\'200\' fill=\'%231f2737\'/%3E%3Ccircle cx=\'100\' cy=\'75\' r=\'40\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3Cpath d=\'M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3C/svg%3E';">
+                    </div>
                 </div>
+
             </div>
         </section>
 
         <!-- الصفحة 2: الإنجازات -->
-        <section id="achievements" class="page achievements">
+        <section id="achievements" class="page achievements" role="tabpanel">
             <h2 class="section-title">
                 <i class="fa-solid fa-trophy"></i> 
                 <span data-i18n="achievementsTitle">أبرز إنجازاتي</span>
             </h2>
             
             <div class="grid-container">
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <span class="card-number">01</span>
+                    </div>
                     <h3 data-i18n="ach1_title">تبديل بايوس كرومبوك</h3>
-                    <p data-i18n="ach1_desc">القدرة على التعامل مع الهاردوير المعقد وتفليش أو تعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.</p>
-                </div>
+                    <p data-i18n="ach1_desc">القدرة على التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) بنجاح.</p>
+                </article>
 
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                    <h3 data-i18n="ach2_title">تعلم الصيانة بعمر صغير</h3>
-                    <p data-i18n="ach2_desc">شغف مبكر بتفكيك وتجميع الأجهزة، واكتساب مهارات اكتشاف الأعطال وإصلاحها بفاعلية.</p>
-                </div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <span class="card-number">02</span>
+                    </div>
+                    <h3 data-i18n="ach2_title">تعلم الصيانة بعمر مبكر</h3>
+                    <p data-i18n="ach2_desc">شغف بتفكيك وتجميع الأجهزة، واكتساب مهارات فحص الأعطال وإصلاحها بدقة.</p>
+                </article>
 
-                <div class="card">
-                    <div class="card-icon"><i class="fa-brands fa-linux"></i></div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-brands fa-linux"></i></div>
+                        <span class="card-number">03</span>
+                    </div>
                     <h3 data-i18n="ach3_title">تثبيت لينكس واحترافه</h3>
-                    <p data-i18n="ach3_desc">تثبيت وإدارة توزيعات نظام التشغيل مفتوح المصدر (Linux)، واحتراف التعامل مع سطر الأوامر وإدارة النظام.</p>
-                </div>
+                    <p data-i18n="ach3_desc">تثبيت وإدارة توزيعات Linux، واحتراف التعامل مع سطر الأوامر وإدارة الحزم.</p>
+                </article>
 
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-code"></i></div>
-                    <h3 data-i18n="ach4_title">تعلم C++ بعمر صغير</h3>
-                    <p data-i18n="ach4_desc">كسر حاجز اللغات البرمجية الصعبة عبر دراسة وفهم لغة C++ العريقة، وتطبيق مفاهيم البرمجة الكائنية.</p>
-                </div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                        <span class="card-number">04</span>
+                    </div>
+                    <h3 data-i18n="ach4_title">تعلم البرمجة بلغة C++</h3>
+                    <p data-i18n="ach4_desc">دراسة أساسيات البرمجة الصلبة عبر فهم C++ وإدارة الذاكرة والمفاهيم الكائنية.</p>
+                </article>
 
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 data-i18n="ach5_title">تأمين راوتر المنزل ضد الاختراق</h3>
-                    <p data-i18n="ach5_desc">تطبيق إعدادات حماية متقدمة للشبكة المنزلية، وسد الثغرات لمنع أي محاولات اختراق للراوتر.</p>
-                </div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span class="card-number">05</span>
+                    </div>
+                    <h3 data-i18n="ach5_title">تأمين شبكة الراوتر</h3>
+                    <p data-i18n="ach5_desc">تطبيق إعدادات حماية متقدمة للشبكة المنزلية وسد الثغرات لمنع محاولات الاختراق.</p>
+                </article>
 
-                <div class="card">
-                    <div class="card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <article class="card">
+                    <div class="card-meta">
+                        <div class="card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <span class="card-number">06</span>
+                    </div>
                     <h3 data-i18n="ach6_title">تثبيت Custom ROM</h3>
-                    <p data-i18n="ach6_desc">تغيير النظام الافتراضي لهاتف Redmi Note 7 وتفليش روم معدل (Custom ROM) لرفع أداء الهاتف وتسريعه بشكل ملحوظ.</p>
-                </div>
+                    <p data-i18n="ach6_desc">تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام.</p>
+                </article>
             </div>
         </section>
 
         <!-- الصفحة 3: تواصل معي -->
-        <section id="contact" class="page contact">
+        <section id="contact" class="page contact" role="tabpanel">
             <div class="contact-content">
                 <h2 class="section-title">
                     <i class="fa-solid fa-link"></i> 
                     <span data-i18n="contactTitle">تواصل معي</span>
                 </h2>
-                <p class="contact-text" data-i18n="contactDesc">يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر منصات التواصل الاجتماعي التالية.</p>
+                <p class="contact-text" data-i18n="contactDesc">يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.</p>
                 
                 <div class="social-links">
                     <a href="https://github.com/Haidara411" target="_blank" rel="noopener noreferrer" class="social-btn github">
                         <i class="fa-brands fa-github"></i>
                         <span>GitHub</span>
                     </a>
-
                     <a href="https://www.youtube.com/@haidaraomran-r4f" target="_blank" rel="noopener noreferrer" class="social-btn youtube">
                         <i class="fa-brands fa-youtube"></i>
                         <span>YouTube</span>
                     </a>
-                    
                     <a href="https://www.instagram.com/h__7o__?rpxt=MW1wa2psZnJjczFvbQ==" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
                         <i class="fa-brands fa-instagram"></i>
                         <span>Instagram</span>
                     </a>
-                    
                     <a href="https://www.facebook.com/profile.php?id=61588714291211&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
                         <i class="fa-brands fa-facebook-f"></i>
                         <span>Facebook</span>
@@ -590,75 +736,89 @@
         </section>
     </main>
 
-    <nav class="bottom-nav-dock">
-        <button class="nav-dock-btn active" onclick="switchPage('home')">
+    <!-- شريط التنقل السفلي -->
+    <nav class="bottom-nav-dock" role="tablist" aria-label="Navigation">
+        <button class="nav-dock-btn active" data-nav="home" role="tab" aria-selected="true">
             <i class="fa-solid fa-house"></i>
             <span data-i18n="navHome">الرئيسية</span>
         </button>
-        <button class="nav-dock-btn" onclick="switchPage('achievements')">
+        <button class="nav-dock-btn" data-nav="achievements" role="tab" aria-selected="false">
             <i class="fa-solid fa-trophy"></i>
             <span data-i18n="navAchievements">الإنجازات</span>
         </button>
-        <button class="nav-dock-btn" onclick="switchPage('contact')">
+        <button class="nav-dock-btn" data-nav="contact" role="tab" aria-selected="false">
             <i class="fa-solid fa-envelope"></i>
-            <span data-i18n="navContact">تواصل معي</span>
+            <span data-i18n="navContact">تواصل</span>
         </button>
     </nav>
 
     <script>
+        const safeStorage = {
+            get: (key, fallback) => {
+                try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
+            },
+            set: (key, val) => {
+                try { localStorage.setItem(key, val); } catch (e) {}
+            }
+        };
+
         const translations = {
             ar: {
                 logo: 'mr<span>kekfa</span>',
-                handle: '@mrkekfa',
-                greeting: "مرحباً، أنا",
-                heroName: "حيدرة <span>عمران</span>",
-                ageTag: "العمر: 13 سنة",
-                roleTag: "مبرمج وتقني",
-                heroBio: "شغوف بالتكنولوجيا، البرمجة، وحل المشاكل التقنية. أستكشف أنظمة التشغيل والشبكات وأبني مهاراتي في عالم البرمجيات والهاردوير منذ سن مبكرة، وأسعى دائماً لتطوير قدراتي لمستويات احترافية.",
+                sopGreeting: "مرحباً، أنا",
+                sopName: "حيدرة",
+                role1: "مبرمج وتقني",
+                role2: "أنظمة تشغيل",
+                role3: "صيانة هاردوير",
+                btnProjects: "تصفح الإنجازات",
+                btnContact: "تواصل معي",
+                sopFooter: "صُنع بواسطة حيدرة",
                 achievementsTitle: "أبرز إنجازاتي",
                 ach1_title: "تبديل بايوس كرومبوك",
-                ach1_desc: "القدرة على التعامل مع الهاردوير المعقد وتفليش أو تعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.",
-                ach2_title: "تعلم الصيانة بعمر صغير",
-                ach2_desc: "شغف مبكر بتفكيك وتجميع الأجهزة، واكتساب مهارات اكتشاف الأعطال وإصلاحها بفاعلية.",
+                ach1_desc: "القدرة على التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) بنجاح.",
+                ach2_title: "تعلم الصيانة بعمر مبكر",
+                ach2_desc: "شغف بتفكيك وتجميع الأجهزة، واكتساب مهارات فحص الأعطال وإصلاحها بدقة.",
                 ach3_title: "تثبيت لينكس واحترافه",
-                ach3_desc: "تثبيت وإدارة توزيعات نظام التشغيل مفتوح المصدر (Linux)، واحتراف التعامل مع سطر الأوامر وإدارة النظام.",
-                ach4_title: "تعلم C++ بعمر صغير",
-                ach4_desc: "كسر حاجز اللغات البرمجية الصعبة عبر دراسة وفهم لغة C++ العريقة، وتطبيق مفاهيم البرمجة الكائنية.",
-                ach5_title: "تأمين راوتر المنزل ضد الاختراق",
-                ach5_desc: "تطبيق إعدادات حماية متقدمة للشبكة المنزلية، وسد الثغرات لمنع أي محاولات اختراق للراوتر.",
+                ach3_desc: "تثبيت وإدارة توزيعات Linux، واحتراف التعامل مع سطر الأوامر وإدارة الحزم.",
+                ach4_title: "تعلم البرمجة بلغة C++",
+                ach4_desc: "دراسة أساسيات البرمجة الصلبة عبر فهم C++ وإدارة الذاكرة والمفاهيم الكائنية.",
+                ach5_title: "تأمين شبكة الراوتر",
+                ach5_desc: "تطبيق إعدادات حماية متقدمة للشبكة المنزلية وسد الثغرات لمنع محاولات الاختراق.",
                 ach6_title: "تثبيت Custom ROM",
-                ach6_desc: "تغيير النظام الافتراضي لهاتف Redmi Note 7 وتفليش روم معدل (Custom ROM) لرفع أداء الهاتف وتسريعه بشكل ملحوظ.",
+                ach6_desc: "تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام.",
                 contactTitle: "تواصل معي",
-                contactDesc: "يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر منصات التواصل الاجتماعي التالية.",
+                contactDesc: "يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.",
                 navHome: "الرئيسية",
                 navAchievements: "الإنجازات",
-                navContact: "تواصل معي",
+                navContact: "تواصل",
                 btnText: "English",
                 pageTitle: "حيدرة عمران | mrkekfa"
             },
             en: {
                 logo: 'mr<span>kekfa</span>',
-                handle: '@mrkekfa',
-                greeting: "Hello, I am",
-                heroName: "Haidara <span>Omran</span>",
-                ageTag: "Age: 13 Years",
-                roleTag: "Developer & Tech Enthusiast",
-                heroBio: "Passionate about technology, coding, and technical troubleshooting. Exploring operating systems, networks, and building my software and hardware skills from an early age, striving towards professional excellence.",
-                achievementsTitle: "My Top Achievements",
-                ach1_title: "Flashing Chromebook BIOS",
-                ach1_desc: "Hands-on experience with hardware modification and successfully replacing/flashing custom BIOS on Chromebook devices.",
+                sopGreeting: "Hello, My Name Is",
+                sopName: "HAIDARA",
+                role1: "Programmer",
+                role2: "OS Tinkerer",
+                role3: "Hardware Tech",
+                btnProjects: "Explore Achievements",
+                btnContact: "Contact Me",
+                sopFooter: "Made by Haidara",
+                achievementsTitle: "Top Achievements",
+                ach1_title: "Chromebook BIOS Flashing",
+                ach1_desc: "Hands-on experience modifying core hardware and successfully flashing custom BIOS.",
                 ach2_title: "Early Hardware Maintenance",
-                ach2_desc: "Early passion for disassembling and repairing computers and electronics, troubleshooting and fixing issues effectively.",
-                ach3_title: "Linux Installation & Mastering",
-                ach3_desc: "Installing and managing Linux distributions, mastering command-line utilities, permissions, and system administration.",
-                ach4_title: "Learning C++ at an Early Age",
-                ach4_desc: "Breaking barriers with complex languages by learning core C++, memory concepts, and object-oriented programming.",
-                ach5_title: "Hardening Home Router Security",
-                ach5_desc: "Applying advanced network security configurations, patching open holes, and protecting the home network against intrusions.",
+                ach2_desc: "Passion for disassembling, repairing, and troubleshooting hardware devices accurately.",
+                ach3_title: "Linux Setup & Administration",
+                ach3_desc: "Installing and customizing Linux systems, mastering command-line utilities and tools.",
+                ach4_title: "Learning C++ Programming",
+                ach4_desc: "Studying systems programming fundamentals, memory management, and OOP in C++.",
+                ach5_title: "Router Security Hardening",
+                ach5_desc: "Configuring network firewalls, securing home Wi-Fi against unauthorized access.",
                 ach6_title: "Custom ROM Installation",
-                ach6_desc: "Replacing stock firmware on Redmi Note 7 with an optimized Custom ROM to unleash maximum speed and performance.",
+                ach6_desc: "Flashing custom Android ROMs on Redmi Note 7 for peak performance and updates.",
                 contactTitle: "Get in Touch",
-                contactDesc: "Feel free to check out my content or connect with me directly through the social platforms below.",
+                contactDesc: "Feel free to check out my content or reach out directly through the platforms below.",
                 navHome: "Home",
                 navAchievements: "Achievements",
                 navContact: "Contact",
@@ -667,64 +827,74 @@
             }
         };
 
-        let currentLang = localStorage.getItem('site_lang') || 'ar';
+        let currentLang = safeStorage.get('site_lang', 'ar');
 
         function applyLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('site_lang', lang);
+            safeStorage.set('site_lang', lang);
 
             const isAr = lang === 'ar';
             document.documentElement.lang = lang;
             document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+            document.body.classList.toggle('lang-en', !isAr);
 
-            if (isAr) {
-                document.body.classList.remove('lang-en');
-            } else {
-                document.body.classList.add('lang-en');
-            }
-
-            document.getElementById('langBtnText').innerText = translations[lang].btnText;
-            document.getElementById('logoText').innerHTML = translations[lang].logo;
-            document.getElementById('userHandleTag').innerText = translations[lang].handle;
-            document.title = translations[lang].pageTitle;
+            const t = translations[lang];
+            document.getElementById('langBtnText').textContent = t.btnText;
+            document.getElementById('logoText').innerHTML = t.logo;
+            document.getElementById('siteTitle').textContent = t.pageTitle;
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
+                if (t[key]) {
+                    el.innerHTML = t[key];
                 }
             });
         }
 
         function toggleLanguage() {
-            const nextLang = currentLang === 'ar' ? 'en' : 'ar';
-            applyLanguage(nextLang);
+            applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
         }
 
         function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            const validPages = ['home', 'achievements', 'contact'];
+            const targetId = validPages.includes(pageId) ? pageId : 'home';
 
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.toggle('active', page.id === targetId);
+            });
 
-            const navButtons = document.querySelectorAll('.nav-dock-btn');
-            navButtons.forEach(btn => {
-                const clickAttr = btn.getAttribute('onclick') || '';
-                if (clickAttr.includes(pageId)) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+            document.querySelectorAll('.nav-dock-btn').forEach(btn => {
+                const isActive = btn.getAttribute('data-nav') === targetId;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        document.addEventListener('click', (e) => {
+            const navBtn = e.target.closest('[data-nav]');
+            if (navBtn) {
+                e.preventDefault();
+                const targetPage = navBtn.getAttribute('data-nav');
+                window.location.hash = '#' + targetPage;
+                return;
+            }
+
+            if (e.target.closest('#langToggleBtn')) {
+                toggleLanguage();
+            }
+        });
+
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '');
+            switchPage(hash);
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             applyLanguage(currentLang);
+            const initialHash = window.location.hash.replace('#', '');
+            switchPage(initialHash || 'home');
         });
     </script>
 </body>
