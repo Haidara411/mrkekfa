@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#090d16">
     
-    <!-- أيقونة التاب (SVG Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230b1120'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3Cdefs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2338bdf8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2338bdf8'/%3E%3C/svg%3E">
+    <!-- أيقونة التاب (SVG Favicon مصححة بالكامل) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230b1120'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2338bdf8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2338bdf8'/%3E%3C/svg%3E">
 
     <!-- SEO & Social Cards -->
     <title id="siteTitle">حيدرة عمران | mrkekfa</title>
-    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة، أنظمة تشغيل، شبكات وصيانة هاردوير.">
+    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة، أنظمة تشغيل لينكس، شبكات وصيانة هاردوير.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="حيدرة عمران | mrkekfa">
     <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
@@ -30,9 +30,9 @@
             --header-bg: rgba(9, 13, 22, 0.75);
             --bg-card: rgba(22, 30, 49, 0.75);
             --bg-card-hover: rgba(30, 41, 66, 0.9);
-            --sop-card-bg: #141923;
-            --sop-disk-bg: #1f2737;
-            --sop-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            --kekfa-card-bg: #141923;
+            --kekfa-disk-bg: #1f2737;
+            --kekfa-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             --primary: #38bdf8;
             --accent: #818cf8;
             --btn-blue: #2563eb;
@@ -57,9 +57,9 @@
             --header-bg: rgba(255, 255, 255, 0.8);
             --bg-card: rgba(255, 255, 255, 0.9);
             --bg-card-hover: #ffffff;
-            --sop-card-bg: #ffffff;
-            --sop-disk-bg: #e2e8f0;
-            --sop-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            --kekfa-card-bg: #ffffff;
+            --kekfa-disk-bg: #e2e8f0;
+            --kekfa-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
             --primary: #0284c7;
             --accent: #6366f1;
             --btn-blue: #0284c7;
@@ -103,6 +103,27 @@
 
         body.lang-en {
             font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+
+        /* موازنة الخط بالإنجليزية لمنع زيادة حجم البطاقة */
+        body.lang-en .kekfa-greeting {
+            font-size: 22px;
+        }
+
+        body.lang-en .kekfa-name {
+            font-size: clamp(38px, 4.8vw, 58px);
+            margin-bottom: 15px;
+        }
+
+        body.lang-en .kekfa-subroles {
+            font-size: 16px;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        body.lang-en .kekfa-btn {
+            padding: 12px 24px;
+            font-size: 14px;
         }
 
         .en-font { font-family: 'Poppins', sans-serif; }
@@ -208,12 +229,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Desktop Card Layout */
-        .sop-desktop-card {
+        /* Kekfa Card Layout */
+        .kekfa-hero-card {
             width: 100%;
             max-width: 1060px;
             margin: auto;
-            background: var(--sop-card-bg);
+            background: var(--kekfa-card-bg);
             border: 1px solid var(--border-glass);
             border-radius: 28px;
             padding: 55px 65px;
@@ -222,42 +243,69 @@
             justify-content: space-between;
             gap: 40px;
             position: relative;
-            box-shadow: var(--sop-card-shadow);
+            box-shadow: var(--kekfa-card-shadow);
         }
 
-        .sop-text-side {
+        /* تثبيت ارتفاع البطاقة على شاشات الكمبيوتر ليتطابق الحجم بين اللغتين */
+        @media (min-width: 993px) {
+            .kekfa-hero-card {
+                min-height: 480px;
+            }
+        }
+
+        .kekfa-text-side {
             flex: 1.2;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: center;
         }
 
-        body[dir="rtl"] .sop-text-side {
+        body[dir="rtl"] .kekfa-text-side {
             text-align: right;
             align-items: flex-start;
         }
 
-        .sop-greeting {
+        .kekfa-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .kekfa-greeting {
             color: var(--text-muted);
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 500;
             margin-bottom: 6px;
             letter-spacing: -0.3px;
         }
 
-        .sop-name {
-            font-size: clamp(48px, 5.5vw, 68px);
+        .kekfa-name {
+            font-size: clamp(44px, 5.2vw, 64px);
             font-weight: 900;
             color: var(--text-main);
             line-height: 1.1;
             margin-bottom: 18px;
             letter-spacing: -1px;
-            text-transform: uppercase;
         }
 
-        .sop-subroles {
+        .kekfa-name span {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+        }
+
+        .kekfa-subroles {
             color: var(--text-muted);
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 500;
             margin-bottom: 35px;
             display: flex;
@@ -266,19 +314,19 @@
             flex-wrap: wrap;
         }
 
-        .sop-subroles span.divider {
+        .kekfa-subroles span.divider {
             color: var(--border-glass);
             font-weight: 300;
         }
 
-        .sop-buttons-row {
+        .kekfa-buttons-row {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
-        .sop-btn {
+        .kekfa-btn {
             font-family: inherit;
             font-size: 15px;
             font-weight: 700;
@@ -293,30 +341,30 @@
             border: none;
         }
 
-        .sop-btn-primary {
+        .kekfa-btn-primary {
             background-color: var(--btn-blue);
             color: #ffffff;
             box-shadow: 0 8px 24px var(--btn-blue-glow);
         }
 
-        .sop-btn-primary:hover {
+        .kekfa-btn-primary:hover {
             box-shadow: 0 12px 30px var(--btn-blue-glow);
             transform: translateY(-2px);
             filter: brightness(1.1);
         }
 
-        .sop-btn-secondary {
+        .kekfa-btn-secondary {
             background-color: var(--btn-sec-bg);
             color: var(--btn-sec-text);
             border: 1px solid var(--btn-sec-border);
         }
 
-        .sop-btn-secondary:hover {
+        .kekfa-btn-secondary:hover {
             border-color: var(--border-highlight);
             transform: translateY(-2px);
         }
 
-        .sop-footer-badge {
+        .kekfa-footer-badge {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -325,27 +373,27 @@
             font-weight: 600;
         }
 
-        .sop-status-dot {
-            width: 8px;
-            height: 8px;
+        .kekfa-status-dot {
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background-color: #f97316;
+            background-color: #10b981;
             display: inline-block;
-            box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
         }
 
-        .sop-avatar-side {
+        .kekfa-avatar-side {
             flex: 0.95;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .sop-avatar-disk {
+        .kekfa-avatar-disk {
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: var(--sop-disk-bg);
+            background: var(--kekfa-disk-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -356,7 +404,7 @@
             animation: floatSlow 6s ease-in-out infinite;
         }
 
-        .sop-avatar-disk img {
+        .kekfa-avatar-disk img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -365,7 +413,7 @@
             transition: transform 0.4s var(--transition-timing);
         }
 
-        .sop-avatar-disk:hover img {
+        .kekfa-avatar-disk:hover img {
             transform: scale(1.05);
         }
 
@@ -376,7 +424,7 @@
 
         /* Mobile Layout */
         @media (max-width: 992px) {
-            .sop-desktop-card {
+            .kekfa-hero-card {
                 background: transparent;
                 border: none;
                 box-shadow: none;
@@ -384,33 +432,34 @@
                 flex-direction: column-reverse;
                 text-align: center;
                 gap: 30px;
+                min-height: auto;
             }
 
-            .sop-text-side {
+            .kekfa-text-side {
                 align-items: center !important;
                 text-align: center !important;
                 width: 100%;
             }
 
-            .sop-greeting { font-size: 20px; }
-            .sop-name { font-size: 40px; margin-bottom: 12px; }
+            .kekfa-greeting { font-size: 20px; }
+            .kekfa-name { font-size: 40px; margin-bottom: 12px; }
 
-            .sop-subroles {
+            .kekfa-subroles {
                 font-size: 15px;
                 justify-content: center;
                 margin-bottom: 25px;
                 gap: 8px;
             }
 
-            .sop-buttons-row {
+            .kekfa-buttons-row {
                 justify-content: center;
                 margin-bottom: 30px;
                 width: 100%;
             }
 
-            .sop-footer-badge { justify-content: center; }
+            .kekfa-footer-badge { justify-content: center; }
 
-            .sop-avatar-disk {
+            .kekfa-avatar-disk {
                 width: 230px;
                 height: 230px;
             }
@@ -594,11 +643,11 @@
                 flex: 1;
                 justify-content: center;
             }
-            .sop-buttons-row {
+            .kekfa-buttons-row {
                 flex-direction: column;
                 width: 100%;
             }
-            .sop-btn {
+            .kekfa-btn {
                 width: 100%;
             }
         }
@@ -622,7 +671,7 @@
             </button>
 
             <div class="tag en-font" style="font-size: 12px; padding: 5px 12px; background: var(--btn-sec-bg); border-radius: 8px; border: 1px solid var(--border-glass);">
-                <i class="fa-solid fa-code"></i> Dev
+                <i class="fa-solid fa-terminal"></i> Tech
             </div>
         </div>
     </header>
@@ -630,37 +679,41 @@
     <main>
         <!-- الرئيسية -->
         <section id="home" class="page hero active" role="tabpanel">
-            <div class="sop-desktop-card">
-                <div class="sop-text-side">
-                    <div class="sop-greeting" data-i18n="sopGreeting">مرحباً، أنا</div>
-                    
-                    <h1 class="sop-name" data-i18n="sopName">حيدرة</h1>
-                    
-                    <div class="sop-subroles">
-                        <span data-i18n="role1">مبرمج وتقني</span>
-                        <span class="divider">|</span>
-                        <span data-i18n="role2">أنظمة تشغيل</span>
-                        <span class="divider">|</span>
-                        <span data-i18n="role3">صيانة هاردوير</span>
+            <div class="kekfa-hero-card">
+                <div class="kekfa-text-side">
+                    <div class="kekfa-badge-top">
+                        <i class="fa-solid fa-code"></i> @mrkekfa
                     </div>
 
-                    <div class="sop-buttons-row">
-                        <button class="sop-btn sop-btn-primary" data-nav="achievements" data-i18n="btnProjects">
+                    <div class="kekfa-greeting" data-i18n="kekfaGreeting">مرحباً، أنا</div>
+                    
+                    <h1 class="kekfa-name" data-i18n="kekfaName">حيدرة <span>عمران</span></h1>
+                    
+                    <div class="kekfa-subroles">
+                        <span data-i18n="role1">مبرمج C++</span>
+                        <span class="divider">|</span>
+                        <span data-i18n="role2">أنظمة تشغيل ولينكس</span>
+                        <span class="divider">|</span>
+                        <span data-i18n="role3">صيانة وتعديل عتاد</span>
+                    </div>
+
+                    <div class="kekfa-buttons-row">
+                        <button class="kekfa-btn kekfa-btn-primary" data-nav="achievements" data-i18n="btnProjects">
                             تصفح الإنجازات
                         </button>
-                        <button class="sop-btn sop-btn-secondary" data-nav="contact" data-i18n="btnContact">
+                        <button class="kekfa-btn kekfa-btn-secondary" data-nav="contact" data-i18n="btnContact">
                             تواصل معي
                         </button>
                     </div>
 
-                    <div class="sop-footer-badge">
-                        <span class="sop-status-dot"></span>
-                        <span data-i18n="sopFooter">صُنع بواسطة حيدرة</span>
+                    <div class="kekfa-footer-badge">
+                        <span class="kekfa-status-dot"></span>
+                        <span data-i18n="kekfaFooter">صنع بواسطة mrkekfa</span>
                     </div>
                 </div>
 
-                <div class="sop-avatar-side">
-                    <div class="sop-avatar-disk">
+                <div class="kekfa-avatar-side">
+                    <div class="kekfa-avatar-disk">
                         <img src="Untitled25_20260814222437.jpg" 
                              alt="Haidara Omran Avatar" 
                              decoding="async" 
@@ -685,7 +738,7 @@
                         <span class="card-number">01</span>
                     </div>
                     <h3 data-i18n="ach1_title">تبديل بايوس كرومبوك</h3>
-                    <p data-i18n="ach1_desc">القدرة على التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) بنجاح.</p>
+                    <p data-i18n="ach1_desc">التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.</p>
                 </article>
 
                 <article class="card">
@@ -694,7 +747,7 @@
                         <span class="card-number">02</span>
                     </div>
                     <h3 data-i18n="ach2_title">تعلم الصيانة بعمر مبكر</h3>
-                    <p data-i18n="ach2_desc">شغف بتفكيك وتجميع الأجهزة، واكتساب مهارات فحص الأعطال وإصلاحها بدقة.</p>
+                    <p data-i18n="ach2_desc">شغف بتفكيك وتجميع الحواسيب والأجهزة، وفحص وتتبع الأعطال الإلكترونية وإصلاحها بدقة.</p>
                 </article>
 
                 <article class="card">
@@ -703,7 +756,7 @@
                         <span class="card-number">03</span>
                     </div>
                     <h3 data-i18n="ach3_title">تثبيت لينكس واحترافه</h3>
-                    <p data-i18n="ach3_desc">تثبيت وإدارة توزيعات Linux، واحتراف التعامل مع سطر الأوامر وإدارة الحزم.</p>
+                    <p data-i18n="ach3_desc">تثبيت وتخصيص توزيعات Linux مفتوحة المصدر، واحتراف العمل عبر سطر الأوامر وإدارة الحزم.</p>
                 </article>
 
                 <article class="card">
@@ -711,8 +764,8 @@
                         <div class="card-icon"><i class="fa-solid fa-code"></i></div>
                         <span class="card-number">04</span>
                     </div>
-                    <h3 data-i18n="ach4_title">تعلم البرمجة بلغة C++</h3>
-                    <p data-i18n="ach4_desc">دراسة أساسيات البرمجة الصلبة عبر فهم C++ وإدارة الذاكرة والمفاهيم الكائنية.</p>
+                    <h3 data-i18n="ach4_title">برمجة الأنظمة بلغة C++</h3>
+                    <p data-i18n="ach4_desc">دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).</p>
                 </article>
 
                 <article class="card">
@@ -721,7 +774,7 @@
                         <span class="card-number">05</span>
                     </div>
                     <h3 data-i18n="ach5_title">تأمين شبكة الراوتر</h3>
-                    <p data-i18n="ach5_desc">تطبيق إعدادات حماية متقدمة للشبكة المنزلية وسد الثغرات لمنع محاولات الاختراق.</p>
+                    <p data-i18n="ach5_desc">تطبيق إعدادات جدار الحماية وسد المنافذ غير الضرورية لحماية الشبكة المنزلية من أي محاولات اختراق.</p>
                 </article>
 
                 <article class="card">
@@ -730,7 +783,7 @@
                         <span class="card-number">06</span>
                     </div>
                     <h3 data-i18n="ach6_title">تثبيت Custom ROM</h3>
-                    <p data-i18n="ach6_desc">تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام.</p>
+                    <p data-i18n="ach6_desc">تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام بنظام أندرويد مفتوح المصدر.</p>
                 </article>
             </div>
         </section>
@@ -792,24 +845,18 @@
             }
         };
 
-        /* اكتشاف المظهر تلقائياً من المتصفح / النظام */
         function detectInitialTheme() {
             const saved = safeStorage.get('site_theme', null);
             if (saved) return saved;
-
-            // فحص إعدادات المتصفح/النظام
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
                 return 'light';
             }
             return 'dark';
         }
 
-        /* اكتشاف اللغة تلقائياً من المتصفح */
         function detectInitialLanguage() {
             const saved = safeStorage.get('site_lang', null);
             if (saved) return saved;
-
-            // قراءة لغة المتصفح الأساسية
             const browserLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
             return browserLang.startsWith('ar') ? 'ar' : 'en';
         }
@@ -839,27 +886,27 @@
         const translations = {
             ar: {
                 logo: 'mr<span>kekfa</span>',
-                sopGreeting: "مرحباً، أنا",
-                sopName: "حيدرة",
-                role1: "مبرمج وتقني",
-                role2: "أنظمة تشغيل",
-                role3: "صيانة هاردوير",
+                kekfaGreeting: "مرحباً، أنا",
+                kekfaName: "حيدرة <span>عمران</span>",
+                role1: "مبرمج C++",
+                role2: "أنظمة تشغيل ولينكس",
+                role3: "صيانة وتعديل عتاد",
                 btnProjects: "تصفح الإنجازات",
                 btnContact: "تواصل معي",
-                sopFooter: "صُنع بواسطة حيدرة",
+                kekfaFooter: "صنع بواسطة mrkekfa",
                 achievementsTitle: "أبرز إنجازاتي",
                 ach1_title: "تبديل بايوس كرومبوك",
-                ach1_desc: "القدرة على التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) بنجاح.",
+                ach1_desc: "التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.",
                 ach2_title: "تعلم الصيانة بعمر مبكر",
-                ach2_desc: "شغف بتفكيك وتجميع الأجهزة، واكتساب مهارات فحص الأعطال وإصلاحها بدقة.",
+                ach2_desc: "شغف بتفكيك وتجميع الحواسيب والأجهزة، وفحص وتتبع الأعطال الإلكترونية وإصلاحها بدقة.",
                 ach3_title: "تثبيت لينكس واحترافه",
-                ach3_desc: "تثبيت وإدارة توزيعات Linux، واحتراف التعامل مع سطر الأوامر وإدارة الحزم.",
-                ach4_title: "تعلم البرمجة بلغة C++",
-                ach4_desc: "دراسة أساسيات البرمجة الصلبة عبر فهم C++ وإدارة الذاكرة والمفاهيم الكائنية.",
+                ach3_desc: "تثبيت وتخصيص توزيعات Linux مفتوحة المصدر، واحتراف العمل عبر سطر الأوامر وإدارة الحزم.",
+                ach4_title: "برمجة الأنظمة بلغة C++",
+                ach4_desc: "دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).",
                 ach5_title: "تأمين شبكة الراوتر",
-                ach5_desc: "تطبيق إعدادات حماية متقدمة للشبكة المنزلية وسد الثغرات لمنع محاولات الاختراق.",
+                ach5_desc: "تطبيق إعدادات جدار الحماية وسد المنافذ غير الضرورية لحماية الشبكة المنزلية من أي محاولات اختراق.",
                 ach6_title: "تثبيت Custom ROM",
-                ach6_desc: "تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام.",
+                ach6_desc: "تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام بنظام أندرويد مفتوح المصدر.",
                 contactTitle: "تواصل معي",
                 contactDesc: "يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.",
                 navHome: "الرئيسية",
@@ -870,27 +917,27 @@
             },
             en: {
                 logo: 'mr<span>kekfa</span>',
-                sopGreeting: "Hello, My Name Is",
-                sopName: "HAIDARA",
-                role1: "Programmer",
-                role2: "OS Tinkerer",
+                kekfaGreeting: "Hello, I am",
+                kekfaName: "Haidara <span>Omran</span>",
+                role1: "C++ Programmer",
+                role2: "Linux & OS Tinkerer",
                 role3: "Hardware Tech",
                 btnProjects: "Explore Achievements",
                 btnContact: "Contact Me",
-                sopFooter: "Made by Haidara",
+                kekfaFooter: "Made By Mrkekfa",
                 achievementsTitle: "Top Achievements",
                 ach1_title: "Chromebook BIOS Flashing",
-                ach1_desc: "Hands-on experience modifying core hardware and successfully flashing custom BIOS.",
+                ach1_desc: "Hands-on experience modifying hardware and successfully flashing custom BIOS on Chromebooks.",
                 ach2_title: "Early Hardware Maintenance",
                 ach2_desc: "Passion for disassembling, repairing, and troubleshooting hardware devices accurately.",
                 ach3_title: "Linux Setup & Administration",
-                ach3_desc: "Installing and customizing Linux systems, mastering command-line utilities and tools.",
-                ach4_title: "Learning C++ Programming",
-                ach4_desc: "Studying systems programming fundamentals, memory management, and OOP in C++.",
+                ach3_desc: "Installing and customizing Linux systems, mastering command-line utilities and package management.",
+                ach4_title: "C++ Systems Programming",
+                ach4_desc: "Studying systems programming, manual memory management, and core OOP fundamentals in C++.",
                 ach5_title: "Router Security Hardening",
-                ach5_desc: "Configuring network firewalls, securing home Wi-Fi against unauthorized access.",
+                ach5_desc: "Configuring network firewalls, securing Wi-Fi ports against unauthorized intrusions.",
                 ach6_title: "Custom ROM Installation",
-                ach6_desc: "Flashing custom Android ROMs on Redmi Note 7 for peak performance and updates.",
+                ach6_desc: "Flashing custom Android ROMs on Redmi Note 7 for peak performance and pure open-source experience.",
                 contactTitle: "Get in Touch",
                 contactDesc: "Feel free to check out my content or reach out directly through the platforms below.",
                 navHome: "Home",
@@ -944,7 +991,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* الاستماع لأي تغيير يجريه المستخدم في مظهر نظامه بالوقت الفعلي */
         if (window.matchMedia) {
             window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
                 if (!safeStorage.get('site_theme', null)) {
@@ -958,7 +1004,11 @@
             if (navBtn) {
                 e.preventDefault();
                 const targetPage = navBtn.getAttribute('data-nav');
-                window.location.hash = '#' + targetPage;
+                if (window.location.hash === '#' + targetPage) {
+                    switchPage(targetPage);
+                } else {
+                    window.location.hash = '#' + targetPage;
+                }
                 return;
             }
 
