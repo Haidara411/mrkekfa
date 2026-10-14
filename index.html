@@ -2,85 +2,120 @@
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#090d16">
-    
-    <!-- أيقونة التاب (SVG Favicon مصححة بالكامل) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#090d16" id="metaThemeColor">
+
+    <!-- تهيئة فورية للمظهر واللغة قبل الرسم لمنع وميض الشاشة (Zero FOUC) -->
+    <script>
+        (function () {
+            try {
+                var savedTheme = localStorage.getItem('site_theme');
+                var theme = savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+                document.documentElement.setAttribute('data-theme', theme);
+                if (theme === 'light') {
+                    document.getElementById('metaThemeColor').setAttribute('content', '#f8fafc');
+                }
+
+                var savedLang = localStorage.getItem('site_lang');
+                var lang = savedLang || ((navigator.language || 'ar').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- أيقونة الموقع (SVG Favicon) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230b1120'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2338bdf8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2338bdf8'/%3E%3C/svg%3E">
 
-    <!-- SEO & Social Cards -->
-    <title id="siteTitle">حيدرة عمران | mrkekfa</title>
-    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة، أنظمة تشغيل لينكس، شبكات وصيانة هاردوير.">
+    <!-- تحسين محركات البحث وبطاقات المشاركة (SEO & Open Graph) -->
+    <title>حيدرة عمران | mrkekfa</title>
+    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة C++، أنظمة تشغيل لينكس، شبكات وصيانة هاردوير.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="حيدرة عمران | mrkekfa">
     <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
     <meta property="og:image" content="Untitled25_20260814222437.jpg">
 
-    <!-- Preconnects & الخطوط -->
+    <!-- الاتصال المسبق وتحميل الخطوط والأيقونات بأعلى سرعة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* الألوان العامة والوضع الداكن */
+        /* ==========================================================================
+           1. المتغيرات العامة ونظام الألوان (CSS Variables & Themes)
+           ========================================================================== */
         :root {
             --bg-base: #090d16;
-            --header-bg: rgba(9, 13, 22, 0.75);
-            --bg-card: rgba(22, 30, 49, 0.75);
-            --bg-card-hover: rgba(30, 41, 66, 0.9);
-            --kekfa-card-bg: #141923;
-            --kekfa-disk-bg: #1f2737;
-            --kekfa-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            --header-bg: rgba(9, 13, 22, 0.8);
+            --bg-card: rgba(20, 27, 45, 0.82);
+            --bg-card-hover: rgba(28, 39, 64, 0.96);
+            --hero-card-bg: #141923;
+            --avatar-disk-bg: #1f2737;
+            --hero-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             --primary: #38bdf8;
+            --primary-soft: rgba(56, 189, 248, 0.1);
+            --primary-border: rgba(56, 189, 248, 0.25);
             --accent: #818cf8;
-            --btn-blue: #2563eb;
-            --btn-blue-glow: rgba(37, 99, 235, 0.45);
+            --btn-primary-bg: #2563eb;
+            --btn-primary-glow: rgba(37, 99, 235, 0.45);
             --btn-sec-bg: rgba(255, 255, 255, 0.05);
             --btn-sec-text: #e2e8f0;
             --btn-sec-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-glass: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(56, 189, 248, 0.4);
-            --dock-bg: rgba(15, 23, 42, 0.88);
+            --border-highlight: rgba(56, 189, 248, 0.45);
+            --dock-bg: rgba(15, 23, 42, 0.9);
             --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
             --grid-line: rgba(255, 255, 255, 0.02);
-            --transition-timing: cubic-bezier(0.16, 1, 0.3, 1);
-            --speed: 0.3s;
+            --status-online: #10b981;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --speed: 0.28s;
+            --container-max-width: 1080px;
         }
 
-        /* متغيرات الوضع الفاتح */
-        [data-theme="light"] {
+        :root[data-theme="light"] {
             --bg-base: #f8fafc;
-            --header-bg: rgba(255, 255, 255, 0.8);
-            --bg-card: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --bg-card: rgba(255, 255, 255, 0.92);
             --bg-card-hover: #ffffff;
-            --kekfa-card-bg: #ffffff;
-            --kekfa-disk-bg: #e2e8f0;
-            --kekfa-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            --hero-card-bg: #ffffff;
+            --avatar-disk-bg: #e2e8f0;
+            --hero-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
             --primary: #0284c7;
+            --primary-soft: rgba(2, 132, 199, 0.1);
+            --primary-border: rgba(2, 132, 199, 0.25);
             --accent: #6366f1;
-            --btn-blue: #0284c7;
-            --btn-blue-glow: rgba(2, 132, 199, 0.35);
+            --btn-primary-bg: #0284c7;
+            --btn-primary-glow: rgba(2, 132, 199, 0.35);
             --btn-sec-bg: #f1f5f9;
             --btn-sec-text: #1e293b;
             --btn-sec-border: #cbd5e1;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-glass: rgba(0, 0, 0, 0.08);
-            --border-highlight: rgba(2, 132, 199, 0.4);
-            --dock-bg: rgba(255, 255, 255, 0.9);
+            --border-highlight: rgba(2, 132, 199, 0.45);
+            --dock-bg: rgba(255, 255, 255, 0.92);
             --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.1);
             --grid-line: rgba(0, 0, 0, 0.03);
         }
 
-        *, *::before, *::after {
+        /* ==========================================================================
+           2. التهيئة الأساسية وتحسينات الأداء (Reset & GPU Optimization)
+           ========================================================================== */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color var(--speed), border-color var(--speed), color var(--speed);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -90,67 +125,63 @@
             line-height: 1.7;
             overflow-x: hidden;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
                 radial-gradient(circle at 15% 90%, rgba(129, 140, 248, 0.08) 0%, transparent 45%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
             -webkit-tap-highlight-color: transparent;
+            transition: background-color var(--speed) ease, color var(--speed) ease;
         }
 
-        body.lang-en {
+        :root[lang="en"] body {
             font-family: 'Poppins', system-ui, -apple-system, sans-serif;
         }
 
-        /* موازنة الخط بالإنجليزية لمنع زيادة حجم البطاقة */
-        body.lang-en .kekfa-greeting {
-            font-size: 22px;
+        .en-font {
+            font-family: 'Poppins', sans-serif;
         }
 
-        body.lang-en .kekfa-name {
-            font-size: clamp(38px, 4.8vw, 58px);
-            margin-bottom: 15px;
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        body.lang-en .kekfa-subroles {
-            font-size: 16px;
-            gap: 10px;
-            margin-bottom: 30px;
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
         }
 
-        body.lang-en .kekfa-btn {
-            padding: 12px 24px;
-            font-size: 14px;
-        }
-
-        .en-font { font-family: 'Poppins', sans-serif; }
-        .code-font { font-family: 'JetBrains Mono', monospace; }
-
-        /* Header */
-        header {
+        /* ==========================================================================
+           3. الشريط العلوي (Header)
+           ========================================================================== */
+        .site-header {
             width: 100%;
-            padding: 16px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--header-bg);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color var(--speed) ease, border-color var(--speed) ease;
         }
 
-        .header-left, .header-right {
+        .header-left,
+        .header-actions {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .logo {
+        .brand-logo {
             font-size: 22px;
             font-weight: 800;
             color: var(--text-main);
@@ -161,15 +192,20 @@
             font-family: 'JetBrains Mono', monospace;
             direction: ltr !important;
             letter-spacing: -0.5px;
+            transition: transform var(--speed) var(--ease-out-expo);
         }
 
-        .logo span {
+        .brand-logo:hover {
+            transform: translate3d(0, -1px, 0);
+        }
+
+        .brand-logo span {
             color: var(--primary);
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
         }
 
-        .icon-btn, .lang-switch-btn {
-            display: flex;
+        .action-btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             background: var(--btn-sec-bg);
@@ -178,7 +214,24 @@
             border-radius: 99px;
             cursor: pointer;
             font-weight: 600;
-            transition: all var(--speed);
+            transition:
+                transform var(--speed) var(--ease-out-expo),
+                border-color var(--speed) ease,
+                color var(--speed) ease,
+                background-color var(--speed) ease;
+        }
+
+        .action-btn:hover {
+            border-color: var(--border-highlight);
+            color: var(--primary);
+            transform: translate3d(0, -1px, 0);
+        }
+
+        .theme-toggle-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 15px;
+            border-radius: 50%;
         }
 
         .lang-switch-btn {
@@ -188,53 +241,60 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .theme-toggle-btn {
-            width: 38px;
-            height: 38px;
-            font-size: 15px;
-            border-radius: 50%;
-            padding: 0;
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            padding: 5px 12px;
+            background: var(--btn-sec-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-glass);
+            user-select: none;
         }
 
-        .icon-btn:hover, .lang-switch-btn:hover, .theme-toggle-btn:hover {
-            border-color: var(--border-highlight);
-            color: var(--primary);
-            transform: translateY(-1px);
-        }
-
-        /* Pages */
+        /* ==========================================================================
+           4. حاوية الصفحات والأقسام (Main & Pages)
+           ========================================================================== */
         main {
             flex: 1;
             width: 100%;
             position: relative;
         }
 
-        .page {
+        .page-section {
             display: none;
-            opacity: 0;
             width: 100%;
             min-height: calc(100vh - 160px);
             padding: 40px 8% 130px;
+            contain: layout style;
         }
 
-        .page.active {
+        .page-section.active {
             display: flex;
             flex-direction: column;
-            opacity: 1;
-            animation: pageFadeIn 0.35s var(--transition-timing) forwards;
+            animation: pageFadeIn 0.35s var(--ease-out-expo) forwards;
         }
 
         @keyframes pageFadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translate3d(0, 12px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
         }
 
-        /* Kekfa Card Layout */
+        /* ==========================================================================
+           5. البطاقة التعريفية بالصفحة الرئيسية (Hero Card)
+           ========================================================================== */
         .kekfa-hero-card {
             width: 100%;
             max-width: 1060px;
             margin: auto;
-            background: var(--kekfa-card-bg);
+            background: var(--hero-card-bg);
             border: 1px solid var(--border-glass);
             border-radius: 28px;
             padding: 55px 65px;
@@ -243,10 +303,10 @@
             justify-content: space-between;
             gap: 40px;
             position: relative;
-            box-shadow: var(--kekfa-card-shadow);
+            box-shadow: var(--hero-card-shadow);
+            transition: background-color var(--speed) ease, border-color var(--speed) ease, box-shadow var(--speed) ease;
         }
 
-        /* تثبيت ارتفاع البطاقة على شاشات الكمبيوتر ليتطابق الحجم بين اللغتين */
         @media (min-width: 993px) {
             .kekfa-hero-card {
                 min-height: 480px;
@@ -261,24 +321,20 @@
             justify-content: center;
         }
 
-        body[dir="rtl"] .kekfa-text-side {
-            text-align: right;
-            align-items: flex-start;
-        }
-
         .kekfa-badge-top {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(56, 189, 248, 0.1);
+            background: var(--primary-soft);
             color: var(--primary);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid var(--primary-border);
             padding: 4px 12px;
             border-radius: 99px;
             font-size: 13px;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
             margin-bottom: 12px;
+            direction: ltr;
         }
 
         .kekfa-greeting {
@@ -298,7 +354,7 @@
             letter-spacing: -1px;
         }
 
-        .kekfa-name span {
+        .kekfa-name .highlight-name {
             color: var(--primary);
             text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
         }
@@ -314,9 +370,10 @@
             flex-wrap: wrap;
         }
 
-        .kekfa-subroles span.divider {
+        .kekfa-subroles .divider {
             color: var(--border-glass);
             font-weight: 300;
+            user-select: none;
         }
 
         .kekfa-buttons-row {
@@ -333,7 +390,12 @@
             padding: 12px 28px;
             border-radius: 99px;
             cursor: pointer;
-            transition: all var(--speed) var(--transition-timing);
+            transition:
+                transform var(--speed) var(--ease-out-expo),
+                box-shadow var(--speed) var(--ease-out-expo),
+                border-color var(--speed) ease,
+                background-color var(--speed) ease,
+                filter var(--speed) ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -342,14 +404,14 @@
         }
 
         .kekfa-btn-primary {
-            background-color: var(--btn-blue);
+            background-color: var(--btn-primary-bg);
             color: #ffffff;
-            box-shadow: 0 8px 24px var(--btn-blue-glow);
+            box-shadow: 0 8px 24px var(--btn-primary-glow);
         }
 
         .kekfa-btn-primary:hover {
-            box-shadow: 0 12px 30px var(--btn-blue-glow);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 30px var(--btn-primary-glow);
+            transform: translate3d(0, -2px, 0);
             filter: brightness(1.1);
         }
 
@@ -361,7 +423,7 @@
 
         .kekfa-btn-secondary:hover {
             border-color: var(--border-highlight);
-            transform: translateY(-2px);
+            transform: translate3d(0, -2px, 0);
         }
 
         .kekfa-footer-badge {
@@ -377,7 +439,7 @@
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            background-color: #10b981;
+            background-color: var(--status-online);
             display: inline-block;
             box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
         }
@@ -393,7 +455,7 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: var(--kekfa-disk-bg);
+            background: var(--avatar-disk-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -401,6 +463,7 @@
             overflow: hidden;
             box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border-glass);
+            will-change: transform;
             animation: floatSlow 6s ease-in-out infinite;
         }
 
@@ -410,7 +473,7 @@
             object-fit: cover;
             display: block;
             border-radius: 50%;
-            transition: transform 0.4s var(--transition-timing);
+            transition: transform 0.4s var(--ease-out-expo);
         }
 
         .kekfa-avatar-disk:hover img {
@@ -418,54 +481,34 @@
         }
 
         @keyframes floatSlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-7px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -7px, 0); }
         }
 
-        /* Mobile Layout */
-        @media (max-width: 992px) {
-            .kekfa-hero-card {
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 10px 0 0;
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 30px;
-                min-height: auto;
-            }
-
-            .kekfa-text-side {
-                align-items: center !important;
-                text-align: center !important;
-                width: 100%;
-            }
-
-            .kekfa-greeting { font-size: 20px; }
-            .kekfa-name { font-size: 40px; margin-bottom: 12px; }
-
-            .kekfa-subroles {
-                font-size: 15px;
-                justify-content: center;
-                margin-bottom: 25px;
-                gap: 8px;
-            }
-
-            .kekfa-buttons-row {
-                justify-content: center;
-                margin-bottom: 30px;
-                width: 100%;
-            }
-
-            .kekfa-footer-badge { justify-content: center; }
-
-            .kekfa-avatar-disk {
-                width: 230px;
-                height: 230px;
-            }
+        /* موازنة الخط بالإنجليزية لمنع تغير حجم البطاقة */
+        :root[lang="en"] .kekfa-greeting {
+            font-size: 22px;
         }
 
-        /* Achievements & Contact */
+        :root[lang="en"] .kekfa-name {
+            font-size: clamp(38px, 4.8vw, 58px);
+            margin-bottom: 15px;
+        }
+
+        :root[lang="en"] .kekfa-subroles {
+            font-size: 16px;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        :root[lang="en"] .kekfa-btn {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
+
+        /* ==========================================================================
+           6. قسم الإنجازات (Achievements Section)
+           ========================================================================== */
         .section-title {
             font-size: 30px;
             font-weight: 800;
@@ -477,11 +520,11 @@
 
         .section-title i {
             color: var(--primary);
-            background: rgba(56, 189, 248, 0.1);
+            background: var(--primary-soft);
             padding: 10px;
             border-radius: 12px;
             font-size: 18px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border: 1px solid var(--primary-border);
         }
 
         .grid-container {
@@ -493,21 +536,25 @@
 
         .card {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-glass);
             border-radius: 18px;
             padding: 26px 22px;
-            transition: all var(--speed);
             display: flex;
             flex-direction: column;
             gap: 12px;
+            contain: content;
+            transition:
+                transform var(--speed) var(--ease-out-expo),
+                background-color var(--speed) ease,
+                border-color var(--speed) ease,
+                box-shadow var(--speed) ease;
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translate3d(0, -4px, 0);
             background: var(--bg-card-hover);
             border-color: var(--border-highlight);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
         }
 
         .card-meta {
@@ -526,8 +573,8 @@
         .card-icon {
             width: 44px;
             height: 44px;
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: var(--primary-soft);
+            border: 1px solid var(--primary-border);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -536,16 +583,29 @@
             color: var(--primary);
         }
 
-        .card h3 { font-size: 18px; color: var(--text-main); font-weight: 700; }
-        .card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.6; }
+        .card h3 {
+            font-size: 18px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
 
+        .card p {
+            color: var(--text-muted);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           7. قسم التواصل مع تمركز خانة الفيسبوك بالمنتصف (Contact Section)
+           ========================================================================== */
         .contact-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             margin: auto;
-            max-width: 700px;
+            max-width: 650px;
+            width: 100%;
         }
 
         .contact-text {
@@ -554,18 +614,22 @@
             margin-bottom: 35px;
         }
 
+        /* شبكة من 6 أعمدة لوضع 3 أزرار في الصف الأول وتوسيط الفيسبوك تماماً في الصف الثاني */
         .social-links {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
             gap: 14px;
-            flex-wrap: wrap;
+            width: 100%;
+            max-width: 560px;
         }
 
         .social-btn {
+            grid-column: span 2;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 14px 24px;
             border-radius: 14px;
             text-decoration: none;
             color: var(--text-main);
@@ -573,30 +637,61 @@
             font-weight: 600;
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
-            transition: all var(--speed);
+            transition:
+                transform var(--speed) var(--ease-out-expo),
+                box-shadow var(--speed) ease,
+                border-color var(--speed) ease,
+                background-color var(--speed) ease,
+                color var(--speed) ease;
+        }
+
+        /* وضع خانة الفيسبوك في المنتصف تماماً أسفل اليوتيوب */
+        .social-btn.facebook {
+            grid-column: 3 / 5;
         }
 
         .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+            transform: translate3d(0, -3px, 0);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
         }
 
-        .social-btn.github:hover { border-color: var(--primary); }
-        .social-btn.youtube:hover { background: rgba(239, 68, 68, 0.12); border-color: #ef4444; color: #ef4444; }
-        .social-btn.instagram:hover { background: rgba(236, 72, 153, 0.12); border-color: #ec4899; color: #ec4899; }
-        .social-btn.facebook:hover { background: rgba(59, 130, 246, 0.12); border-color: #3b82f6; color: #3b82f6; }
+        .social-btn.github:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
 
-        /* Dock */
+        .social-btn.youtube:hover {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .social-btn.instagram:hover {
+            background: rgba(236, 72, 153, 0.12);
+            border-color: #ec4899;
+            color: #ec4899;
+        }
+
+        .social-btn.facebook:hover {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        /* ==========================================================================
+           8. شريط التنقل السفلي (Bottom Navigation Dock)
+           ========================================================================== */
         .bottom-nav-dock {
             position: fixed;
             bottom: 24px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
             display: flex;
             align-items: center;
             gap: 6px;
             background: var(--dock-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-glass);
             border-radius: 99px;
             padding: 6px 8px;
@@ -617,7 +712,10 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition: all var(--speed);
+            transition:
+                background-color var(--speed) ease,
+                color var(--speed) ease,
+                box-shadow var(--speed) ease;
         }
 
         .nav-dock-btn:hover {
@@ -631,110 +729,207 @@
             box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
         }
 
+        /* ==========================================================================
+           9. التجاوب مع الشاشات المختلفة (Responsive Media Queries)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .kekfa-hero-card {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 10px 0 0;
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+                min-height: auto;
+            }
+
+            .kekfa-text-side {
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .kekfa-greeting {
+                font-size: 20px;
+            }
+
+            .kekfa-name {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .kekfa-subroles {
+                font-size: 15px;
+                justify-content: center;
+                margin-bottom: 25px;
+                gap: 8px;
+            }
+
+            .kekfa-buttons-row {
+                justify-content: center;
+                margin-bottom: 30px;
+                width: 100%;
+            }
+
+            .kekfa-footer-badge {
+                justify-content: center;
+            }
+
+            .kekfa-avatar-disk {
+                width: 230px;
+                height: 230px;
+            }
+        }
+
         @media (max-width: 600px) {
             .bottom-nav-dock {
                 bottom: 14px;
                 width: calc(100% - 24px);
                 justify-content: space-around;
             }
+
             .nav-dock-btn {
                 padding: 8px 12px;
                 font-size: 13px;
                 flex: 1;
                 justify-content: center;
             }
+
             .kekfa-buttons-row {
                 flex-direction: column;
                 width: 100%;
             }
+
             .kekfa-btn {
                 width: 100%;
+            }
+
+            /* الحفاظ على تمركز الفيسبوك في المنتصف حتى على شاشات الموبايل */
+            .social-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .social-btn {
+                grid-column: span 1;
+            }
+
+            .social-btn.instagram {
+                grid-column: 1 / -1;
+                width: 65%;
+                justify-self: center;
+            }
+
+            .social-btn.facebook {
+                grid-column: 1 / -1;
+                width: 65%;
+                justify-self: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header class="site-header">
         <div class="header-left">
-            <a href="#home" class="logo" id="logoText" data-nav="home">mr<span>kekfa</span></a>
+            <a href="#home" class="brand-logo" data-nav="home">mr<span>kekfa</span></a>
         </div>
-        
-        <div class="header-right">
-            <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
-                <i class="fa-solid fa-sun" id="themeIcon"></i>
+
+        <div class="header-actions">
+            <button type="button" class="action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
+                <i class="fa-solid fa-sun" id="themeIcon" aria-hidden="true"></i>
             </button>
 
-            <button class="lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
-                <i class="fa-solid fa-globe"></i>
+            <button type="button" class="action-btn lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
                 <span id="langBtnText">English</span>
             </button>
 
-            <div class="tag en-font" style="font-size: 12px; padding: 5px 12px; background: var(--btn-sec-bg); border-radius: 8px; border: 1px solid var(--border-glass);">
-                <i class="fa-solid fa-terminal"></i> Tech
+            <div class="header-badge en-font" aria-hidden="true">
+                <i class="fa-solid fa-terminal"></i>
+                <span>Tech</span>
             </div>
         </div>
     </header>
 
     <main>
         <!-- الرئيسية -->
-        <section id="home" class="page hero active" role="tabpanel">
+        <section id="home" class="page-section active" role="tabpanel" aria-labelledby="tab-home">
             <div class="kekfa-hero-card">
                 <div class="kekfa-text-side">
                     <div class="kekfa-badge-top">
-                        <i class="fa-solid fa-code"></i> @mrkekfa
+                        <i class="fa-solid fa-code" aria-hidden="true"></i>
+                        <span>@mrkekfa</span>
                     </div>
 
                     <div class="kekfa-greeting" data-i18n="kekfaGreeting">مرحباً، أنا</div>
-                    
-                    <h1 class="kekfa-name" data-i18n="kekfaName">حيدرة <span>عمران</span></h1>
-                    
+
+                    <h1 class="kekfa-name">
+                        <span data-i18n="firstName">حيدرة</span>
+                        <span class="highlight-name" data-i18n="lastName">عمران</span>
+                    </h1>
+
                     <div class="kekfa-subroles">
                         <span data-i18n="role1">مبرمج C++</span>
-                        <span class="divider">|</span>
+                        <span class="divider" aria-hidden="true">|</span>
                         <span data-i18n="role2">أنظمة تشغيل ولينكس</span>
-                        <span class="divider">|</span>
+                        <span class="divider" aria-hidden="true">|</span>
                         <span data-i18n="role3">صيانة وتعديل عتاد</span>
                     </div>
 
                     <div class="kekfa-buttons-row">
-                        <button class="kekfa-btn kekfa-btn-primary" data-nav="achievements" data-i18n="btnProjects">
+                        <button type="button" class="kekfa-btn kekfa-btn-primary" data-nav="achievements" data-i18n="btnProjects">
                             تصفح الإنجازات
                         </button>
-                        <button class="kekfa-btn kekfa-btn-secondary" data-nav="contact" data-i18n="btnContact">
+                        <button type="button" class="kekfa-btn kekfa-btn-secondary" data-nav="contact" data-i18n="btnContact">
                             تواصل معي
                         </button>
                     </div>
 
                     <div class="kekfa-footer-badge">
-                        <span class="kekfa-status-dot"></span>
+                        <span class="kekfa-status-dot" aria-hidden="true"></span>
                         <span data-i18n="kekfaFooter">صنع بواسطة mrkekfa</span>
                     </div>
                 </div>
 
                 <div class="kekfa-avatar-side">
                     <div class="kekfa-avatar-disk">
-                        <img src="Untitled25_20260814222437.jpg" 
-                             alt="Haidara Omran Avatar" 
-                             decoding="async" 
-                             fetchpriority="high"
-                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect width=\'200\' height=\'200\' fill=\'%231f2737\'/%3E%3Ccircle cx=\'100\' cy=\'75\' r=\'40\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3Cpath d=\'M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z\' fill=\'%2338bdf8\' opacity=\'0.85\'/%3E%3C/svg%3E';">
+                        <img
+                            src="Untitled25_20260814222437.jpg"
+                            alt="Haidara Omran Avatar"
+                            width="320"
+                            height="320"
+                            decoding="async"
+                            fetchpriority="high"
+                            id="heroAvatarImg"
+                        >
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- الإنجازات -->
-        <section id="achievements" class="page achievements" role="tabpanel">
+        <section id="achievements" class="page-section" role="tabpanel" aria-labelledby="tab-achievements" hidden>
             <h2 class="section-title">
-                <i class="fa-solid fa-trophy"></i> 
+                <i class="fa-solid fa-trophy" aria-hidden="true"></i>
                 <span data-i18n="achievementsTitle">أبرز إنجازاتي</span>
             </h2>
-            
+
             <div class="grid-container">
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="card-icon"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
                         <span class="card-number">01</span>
                     </div>
                     <h3 data-i18n="ach1_title">تبديل بايوس كرومبوك</h3>
@@ -743,7 +938,7 @@
 
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
                         <span class="card-number">02</span>
                     </div>
                     <h3 data-i18n="ach2_title">تعلم الصيانة بعمر مبكر</h3>
@@ -752,7 +947,7 @@
 
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-brands fa-linux"></i></div>
+                        <div class="card-icon"><i class="fa-brands fa-linux" aria-hidden="true"></i></div>
                         <span class="card-number">03</span>
                     </div>
                     <h3 data-i18n="ach3_title">تثبيت لينكس واحترافه</h3>
@@ -761,7 +956,7 @@
 
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="card-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
                         <span class="card-number">04</span>
                     </div>
                     <h3 data-i18n="ach4_title">برمجة الأنظمة بلغة C++</h3>
@@ -770,7 +965,7 @@
 
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="card-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
                         <span class="card-number">05</span>
                     </div>
                     <h3 data-i18n="ach5_title">تأمين شبكة الراوتر</h3>
@@ -779,7 +974,7 @@
 
                 <article class="card">
                     <div class="card-meta">
-                        <div class="card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div class="card-icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></div>
                         <span class="card-number">06</span>
                     </div>
                     <h3 data-i18n="ach6_title">تثبيت Custom ROM</h3>
@@ -789,29 +984,29 @@
         </section>
 
         <!-- تواصل معي -->
-        <section id="contact" class="page contact" role="tabpanel">
+        <section id="contact" class="page-section" role="tabpanel" aria-labelledby="tab-contact" hidden>
             <div class="contact-content">
                 <h2 class="section-title">
-                    <i class="fa-solid fa-link"></i> 
+                    <i class="fa-solid fa-link" aria-hidden="true"></i>
                     <span data-i18n="contactTitle">تواصل معي</span>
                 </h2>
                 <p class="contact-text" data-i18n="contactDesc">يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.</p>
-                
-                <div class="social-links">
+
+                <div class="social-links en-font">
                     <a href="https://github.com/Haidara411" target="_blank" rel="noopener noreferrer" class="social-btn github">
-                        <i class="fa-brands fa-github"></i>
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
                         <span>GitHub</span>
                     </a>
                     <a href="https://www.youtube.com/@haidaraomran-r4f" target="_blank" rel="noopener noreferrer" class="social-btn youtube">
-                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
                         <span>YouTube</span>
                     </a>
                     <a href="https://www.instagram.com/h__7o__?rpxt=MW1wa2psZnJjczFvbQ==" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
-                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                         <span>Instagram</span>
                     </a>
                     <a href="https://www.facebook.com/profile.php?id=61588714291211&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                         <span>Facebook</span>
                     </a>
                 </div>
@@ -821,219 +1016,226 @@
 
     <!-- شريط التنقل السفلي -->
     <nav class="bottom-nav-dock" role="tablist" aria-label="Navigation">
-        <button class="nav-dock-btn active" data-nav="home" role="tab" aria-selected="true">
-            <i class="fa-solid fa-house"></i>
+        <button type="button" id="tab-home" class="nav-dock-btn active" data-nav="home" role="tab" aria-selected="true" aria-controls="home">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
             <span data-i18n="navHome">الرئيسية</span>
         </button>
-        <button class="nav-dock-btn" data-nav="achievements" role="tab" aria-selected="false">
-            <i class="fa-solid fa-trophy"></i>
+        <button type="button" id="tab-achievements" class="nav-dock-btn" data-nav="achievements" role="tab" aria-selected="false" aria-controls="achievements">
+            <i class="fa-solid fa-trophy" aria-hidden="true"></i>
             <span data-i18n="navAchievements">الإنجازات</span>
         </button>
-        <button class="nav-dock-btn" data-nav="contact" role="tab" aria-selected="false">
-            <i class="fa-solid fa-envelope"></i>
+        <button type="button" id="tab-contact" class="nav-dock-btn" data-nav="contact" role="tab" aria-selected="false" aria-controls="contact">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             <span data-i18n="navContact">تواصل</span>
         </button>
     </nav>
 
     <script>
-        const safeStorage = {
-            get: (key, fallback) => {
-                try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
-            },
-            set: (key, val) => {
-                try { localStorage.setItem(key, val); } catch (e) {}
-            }
-        };
+        (() => {
+            'use strict';
 
-        function detectInitialTheme() {
-            const saved = safeStorage.get('site_theme', null);
-            if (saved) return saved;
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                return 'light';
-            }
-            return 'dark';
-        }
+            const STORAGE_KEYS = {
+                THEME: 'site_theme',
+                LANG: 'site_lang'
+            };
 
-        function detectInitialLanguage() {
-            const saved = safeStorage.get('site_lang', null);
-            if (saved) return saved;
-            const browserLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase();
-            return browserLang.startsWith('ar') ? 'ar' : 'en';
-        }
+            const VALID_PAGES = new Set(['home', 'achievements', 'contact']);
 
-        let currentTheme = detectInitialTheme();
-        let currentLang = detectInitialLanguage();
+            const FALLBACK_AVATAR =
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231f2737'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%2338bdf8' opacity='0.85'/%3E%3Cpath d='M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z' fill='%2338bdf8' opacity='0.85'/%3E%3C/svg%3E";
 
-        function applyTheme(theme, save = false) {
-            currentTheme = theme;
-            if (save) safeStorage.set('site_theme', theme);
-            document.documentElement.setAttribute('data-theme', theme);
-
-            const themeIcon = document.getElementById('themeIcon');
-            if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon';
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8fafc');
-            } else {
-                themeIcon.className = 'fa-solid fa-sun';
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', '#090d16');
-            }
-        }
-
-        function toggleTheme() {
-            applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
-        }
-
-        const translations = {
-            ar: {
-                logo: 'mr<span>kekfa</span>',
-                kekfaGreeting: "مرحباً، أنا",
-                kekfaName: "حيدرة <span>عمران</span>",
-                role1: "مبرمج C++",
-                role2: "أنظمة تشغيل ولينكس",
-                role3: "صيانة وتعديل عتاد",
-                btnProjects: "تصفح الإنجازات",
-                btnContact: "تواصل معي",
-                kekfaFooter: "صنع بواسطة mrkekfa",
-                achievementsTitle: "أبرز إنجازاتي",
-                ach1_title: "تبديل بايوس كرومبوك",
-                ach1_desc: "التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.",
-                ach2_title: "تعلم الصيانة بعمر مبكر",
-                ach2_desc: "شغف بتفكيك وتجميع الحواسيب والأجهزة، وفحص وتتبع الأعطال الإلكترونية وإصلاحها بدقة.",
-                ach3_title: "تثبيت لينكس واحترافه",
-                ach3_desc: "تثبيت وتخصيص توزيعات Linux مفتوحة المصدر، واحتراف العمل عبر سطر الأوامر وإدارة الحزم.",
-                ach4_title: "برمجة الأنظمة بلغة C++",
-                ach4_desc: "دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).",
-                ach5_title: "تأمين شبكة الراوتر",
-                ach5_desc: "تطبيق إعدادات جدار الحماية وسد المنافذ غير الضرورية لحماية الشبكة المنزلية من أي محاولات اختراق.",
-                ach6_title: "تثبيت Custom ROM",
-                ach6_desc: "تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام بنظام أندرويد مفتوح المصدر.",
-                contactTitle: "تواصل معي",
-                contactDesc: "يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.",
-                navHome: "الرئيسية",
-                navAchievements: "الإنجازات",
-                navContact: "تواصل",
-                btnText: "English",
-                pageTitle: "حيدرة عمران | mrkekfa"
-            },
-            en: {
-                logo: 'mr<span>kekfa</span>',
-                kekfaGreeting: "Hello, I am",
-                kekfaName: "Haidara <span>Omran</span>",
-                role1: "C++ Programmer",
-                role2: "Linux & OS Tinkerer",
-                role3: "Hardware Tech",
-                btnProjects: "Explore Achievements",
-                btnContact: "Contact Me",
-                kekfaFooter: "Made By Mrkekfa",
-                achievementsTitle: "Top Achievements",
-                ach1_title: "Chromebook BIOS Flashing",
-                ach1_desc: "Hands-on experience modifying hardware and successfully flashing custom BIOS on Chromebooks.",
-                ach2_title: "Early Hardware Maintenance",
-                ach2_desc: "Passion for disassembling, repairing, and troubleshooting hardware devices accurately.",
-                ach3_title: "Linux Setup & Administration",
-                ach3_desc: "Installing and customizing Linux systems, mastering command-line utilities and package management.",
-                ach4_title: "C++ Systems Programming",
-                ach4_desc: "Studying systems programming, manual memory management, and core OOP fundamentals in C++.",
-                ach5_title: "Router Security Hardening",
-                ach5_desc: "Configuring network firewalls, securing Wi-Fi ports against unauthorized intrusions.",
-                ach6_title: "Custom ROM Installation",
-                ach6_desc: "Flashing custom Android ROMs on Redmi Note 7 for peak performance and pure open-source experience.",
-                contactTitle: "Get in Touch",
-                contactDesc: "Feel free to check out my content or reach out directly through the platforms below.",
-                navHome: "Home",
-                navAchievements: "Achievements",
-                navContact: "Contact",
-                btnText: "العربية",
-                pageTitle: "Haidara Omran | mrkekfa"
-            }
-        };
-
-        function applyLanguage(lang, save = false) {
-            currentLang = lang;
-            if (save) safeStorage.set('site_lang', lang);
-
-            const isAr = lang === 'ar';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-            document.body.classList.toggle('lang-en', !isAr);
-
-            const t = translations[lang];
-            document.getElementById('langBtnText').textContent = t.btnText;
-            document.getElementById('logoText').innerHTML = t.logo;
-            document.getElementById('siteTitle').textContent = t.pageTitle;
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) {
-                    el.innerHTML = t[key];
+            const TRANSLATIONS = {
+                ar: {
+                    pageTitle: 'حيدرة عمران | mrkekfa',
+                    btnText: 'English',
+                    kekfaGreeting: 'مرحباً، أنا',
+                    firstName: 'حيدرة',
+                    lastName: 'عمران',
+                    role1: 'مبرمج C++',
+                    role2: 'أنظمة تشغيل ولينكس',
+                    role3: 'صيانة وتعديل عتاد',
+                    btnProjects: 'تصفح الإنجازات',
+                    btnContact: 'تواصل معي',
+                    kekfaFooter: 'صنع بواسطة mrkekfa',
+                    achievementsTitle: 'أبرز إنجازاتي',
+                    ach1_title: 'تبديل بايوس كرومبوك',
+                    ach1_desc: 'التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.',
+                    ach2_title: 'تعلم الصيانة بعمر مبكر',
+                    ach2_desc: 'شغف بتفكيك وتجميع الحواسيب والأجهزة، وفحص وتتبع الأعطال الإلكترونية وإصلاحها بدقة.',
+                    ach3_title: 'تثبيت لينكس واحترافه',
+                    ach3_desc: 'تثبيت وتخصيص توزيعات Linux مفتوحة المصدر، واحتراف العمل عبر سطر الأوامر وإدارة الحزم.',
+                    ach4_title: 'برمجة الأنظمة بلغة C++',
+                    ach4_desc: 'دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).',
+                    ach5_title: 'تأمين شبكة الراوتر',
+                    ach5_desc: 'تطبيق إعدادات جدار الحماية وسد المنافذ غير الضرورية لحماية الشبكة المنزلية من أي محاولات اختراق.',
+                    ach6_title: 'تثبيت Custom ROM',
+                    ach6_desc: 'تفليش روم معدل لهاتف Redmi Note 7 لرفع الأداء والحصول على أحدث إصدار نظام بنظام أندرويد مفتوح المصدر.',
+                    contactTitle: 'تواصل معي',
+                    contactDesc: 'يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.',
+                    navHome: 'الرئيسية',
+                    navAchievements: 'الإنجازات',
+                    navContact: 'تواصل'
+                },
+                en: {
+                    pageTitle: 'Haidara Omran | mrkekfa',
+                    btnText: 'العربية',
+                    kekfaGreeting: 'Hello, I am',
+                    firstName: 'Haidara',
+                    lastName: 'Omran',
+                    role1: 'C++ Programmer',
+                    role2: 'Linux & OS Tinkerer',
+                    role3: 'Hardware Tech',
+                    btnProjects: 'Explore Achievements',
+                    btnContact: 'Contact Me',
+                    kekfaFooter: 'Made By Mrkekfa',
+                    achievementsTitle: 'Top Achievements',
+                    ach1_title: 'Chromebook BIOS Flashing',
+                    ach1_desc: 'Hands-on experience modifying hardware and successfully flashing custom BIOS on Chromebooks.',
+                    ach2_title: 'Early Hardware Maintenance',
+                    ach2_desc: 'Passion for disassembling, repairing, and troubleshooting hardware devices accurately.',
+                    ach3_title: 'Linux Setup & Administration',
+                    ach3_desc: 'Installing and customizing Linux systems, mastering command-line utilities and package management.',
+                    ach4_title: 'C++ Systems Programming',
+                    ach4_desc: 'Studying systems programming, manual memory management, and core OOP fundamentals in C++.',
+                    ach5_title: 'Router Security Hardening',
+                    ach5_desc: 'Configuring network firewalls, securing Wi-Fi ports against unauthorized intrusions.',
+                    ach6_title: 'Custom ROM Installation',
+                    ach6_desc: 'Flashing custom Android ROMs on Redmi Note 7 for peak performance and pure open-source experience.',
+                    contactTitle: 'Get in Touch',
+                    contactDesc: 'Feel free to check out my content or reach out directly through the platforms below.',
+                    navHome: 'Home',
+                    navAchievements: 'Achievements',
+                    navContact: 'Contact'
                 }
-            });
-        }
+            };
 
-        function toggleLanguage() {
-            applyLanguage(currentLang === 'ar' ? 'en' : 'ar', true);
-        }
-
-        function switchPage(pageId) {
-            const validPages = ['home', 'achievements', 'contact'];
-            const targetId = validPages.includes(pageId) ? pageId : 'home';
-
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.toggle('active', page.id === targetId);
-            });
-
-            document.querySelectorAll('.nav-dock-btn').forEach(btn => {
-                const isActive = btn.getAttribute('data-nav') === targetId;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-                if (!safeStorage.get('site_theme', null)) {
-                    applyTheme(e.matches ? 'light' : 'dark', false);
+            const safeStorage = {
+                get(key) {
+                    try { return localStorage.getItem(key); } catch { return null; }
+                },
+                set(key, val) {
+                    try { localStorage.setItem(key, val); } catch {}
                 }
-            });
-        }
+            };
 
-        document.addEventListener('click', (e) => {
-            const navBtn = e.target.closest('[data-nav]');
-            if (navBtn) {
+            const dom = {
+                root: document.documentElement,
+                metaTheme: document.getElementById('metaThemeColor'),
+                themeBtn: document.getElementById('themeToggleBtn'),
+                themeIcon: document.getElementById('themeIcon'),
+                langBtn: document.getElementById('langToggleBtn'),
+                langBtnText: document.getElementById('langBtnText'),
+                avatarImg: document.getElementById('heroAvatarImg'),
+                i18nNodes: document.querySelectorAll('[data-i18n]'),
+                pages: document.querySelectorAll('.page-section'),
+                dockBtns: document.querySelectorAll('.nav-dock-btn')
+            };
+
+            let currentTheme = dom.root.getAttribute('data-theme') || 'dark';
+            let currentLang = dom.root.lang || 'ar';
+            let currentPage = 'home';
+
+            function applyTheme(theme, save = false) {
+                currentTheme = theme;
+                if (save) safeStorage.set(STORAGE_KEYS.THEME, theme);
+
+                dom.root.setAttribute('data-theme', theme);
+                const isLight = theme === 'light';
+                dom.themeIcon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#090d16');
+            }
+
+            function applyLanguage(lang, save = false) {
+                currentLang = lang;
+                if (save) safeStorage.set(STORAGE_KEYS.LANG, lang);
+
+                const isAr = lang === 'ar';
+                const dict = TRANSLATIONS[lang];
+
+                dom.root.lang = lang;
+                dom.root.dir = isAr ? 'rtl' : 'ltr';
+                document.title = dict.pageTitle;
+                dom.langBtnText.textContent = dict.btnText;
+
+                for (let i = 0; i < dom.i18nNodes.length; i++) {
+                    const node = dom.i18nNodes[i];
+                    const key = node.getAttribute('data-i18n');
+                    if (dict[key]) {
+                        node.textContent = dict[key];
+                    }
+                }
+            }
+
+            function switchPage(pageId) {
+                const targetId = VALID_PAGES.has(pageId) ? pageId : 'home';
+                if (targetId === currentPage && !document.getElementById(targetId).hidden) return;
+                currentPage = targetId;
+
+                for (let i = 0; i < dom.pages.length; i++) {
+                    const page = dom.pages[i];
+                    const isTarget = page.id === targetId;
+                    page.classList.toggle('active', isTarget);
+                    page.hidden = !isTarget;
+                }
+
+                for (let i = 0; i < dom.dockBtns.length; i++) {
+                    const btn = dom.dockBtns[i];
+                    const isTarget = btn.getAttribute('data-nav') === targetId;
+                    btn.classList.toggle('active', isTarget);
+                    btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+                }
+
+                if (window.scrollY > 0) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            function getHashPage() {
+                return window.location.hash.slice(1).trim().toLowerCase() || 'home';
+            }
+
+            dom.avatarImg.addEventListener('error', function onAvatarError() {
+                this.removeEventListener('error', onAvatarError);
+                this.src = FALLBACK_AVATAR;
+            });
+
+            dom.themeBtn.addEventListener('click', () => {
+                applyTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+            });
+
+            dom.langBtn.addEventListener('click', () => {
+                applyLanguage(currentLang === 'ar' ? 'en' : 'ar', true);
+            });
+
+            document.addEventListener('click', (e) => {
+                const navTrigger = e.target.closest('[data-nav]');
+                if (!navTrigger) return;
+
                 e.preventDefault();
-                const targetPage = navBtn.getAttribute('data-nav');
-                if (window.location.hash === '#' + targetPage) {
-                    switchPage(targetPage);
+                const targetPage = navTrigger.getAttribute('data-nav');
+                if (window.location.hash !== '#' + targetPage) {
+                    window.location.hash = targetPage;
                 } else {
-                    window.location.hash = '#' + targetPage;
+                    switchPage(targetPage);
                 }
-                return;
+            });
+
+            window.addEventListener('hashchange', () => {
+                switchPage(getHashPage());
+            });
+
+            if (window.matchMedia) {
+                window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                    if (!safeStorage.get(STORAGE_KEYS.THEME)) {
+                        applyTheme(e.matches ? 'light' : 'dark', false);
+                    }
+                });
             }
 
-            if (e.target.closest('#langToggleBtn')) {
-                toggleLanguage();
-                return;
-            }
-
-            if (e.target.closest('#themeToggleBtn')) {
-                toggleTheme();
-                return;
-            }
-        });
-
-        window.addEventListener('hashchange', () => {
-            const hash = window.location.hash.replace('#', '');
-            switchPage(hash);
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
             applyTheme(currentTheme, false);
             applyLanguage(currentLang, false);
-            const initialHash = window.location.hash.replace('#', '');
-            switchPage(initialHash || 'home');
-        });
+            switchPage(getHashPage());
+        })();
     </script>
 </body>
 </html>
