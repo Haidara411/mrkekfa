@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    <meta name="theme-color" content="#121212" id="metaThemeColor">
 
     <!-- تهيئة فورية للمظهر واللغة قبل الرسم لمنع وميض الشاشة (Zero FOUC) -->
     <script>
@@ -25,7 +25,7 @@
     </script>
 
     <!-- أيقونة الموقع (SVG Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23e2e8f0'/%3E%3Cstop offset='100%25' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2394a3b8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2394a3b8'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23121212'/%3E%3Cstop offset='100%25' stop-color='%231e1e1e'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%232563eb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%233b82f6' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%233b82f6'/%3E%3C/svg%3E">
 
     <!-- تحسين محركات البحث وبطاقات المشاركة (SEO & Open Graph) -->
     <title>حيدرة عمران | mrkekfa</title>
@@ -35,44 +35,49 @@
     <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
     <meta property="og:image" content="Untitled25_20260814222437.jpg">
 
-    <!-- الاتصال المسبق وتحميل الخطوط والأيقونات بأعلى سرعة -->
+    <!-- تحسين تحميل الخطوط للشبكات الضعيفة (font-display: swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <style>
         /* ==========================================================================
-           1. المتغيرات العامة ونظام الألوان (رمادي جميل - Beautiful Gray/Slate Theme)
+           1. المتغيرات العامة ونظام الألوان المطابق للصورة (مع تعديل زر تواصل ليكون أبيض طبيعي)
            ========================================================================== */
         :root {
-            --bg-base: #0b0f19;
-            --header-bg: rgba(11, 15, 25, 0.85);
-            --bg-card: rgba(23, 31, 48, 0.82);
-            --bg-card-hover: rgba(33, 44, 68, 0.96);
-            --hero-card-bg: #151c2e;
-            --avatar-disk-bg: #1e293b;
-            --hero-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-            --primary: #f8fafc;
-            --primary-soft: rgba(248, 250, 252, 0.1);
-            --primary-border: rgba(248, 250, 252, 0.25);
-            --accent: #cbd5e1;
-            --btn-primary-bg: #334155;
-            --btn-primary-glow: rgba(51, 65, 85, 0.5);
-            --btn-sec-bg: rgba(255, 255, 255, 0.05);
-            --btn-sec-text: #f1f5f9;
-            --btn-sec-border: rgba(255, 255, 255, 0.1);
+            --bg-base: #121212;
+            --header-bg: rgba(18, 18, 18, 0.85);
+            --bg-card: rgba(24, 24, 27, 0.85);
+            --bg-card-hover: rgba(39, 39, 42, 0.95);
+            --hero-card-bg: #18181b;
+            --avatar-disk-bg: #27272a;
+            --hero-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            --primary: #3b82f6;
+            --primary-soft: rgba(59, 130, 246, 0.15);
+            --primary-border: rgba(59, 130, 246, 0.3);
+            --accent: #60a5fa;
+            --btn-primary-bg: #2563eb;
+            --btn-primary-glow: rgba(37, 99, 235, 0.5);
+            
+            /* تعديل زر تواصل ليكون أبيض طبيعي */
+            --btn-sec-bg: rgba(255, 255, 255, 0.08);
+            --btn-sec-text: #ffffff;
+            --btn-sec-border: rgba(255, 255, 255, 0.2);
+            --btn-sec-hover-bg: rgba(255, 255, 255, 0.15);
+
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-muted: #a1a1aa;
             --border-glass: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(248, 250, 252, 0.45);
-            --dock-bg: rgba(15, 23, 42, 0.92);
-            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(148, 163, 184, 0.12);
-            --grid-line: rgba(255, 255, 255, 0.02);
-            --status-online: #10b981;
+            --border-highlight: rgba(255, 255, 255, 0.4);
+            --dock-bg: rgba(24, 24, 27, 0.92);
+            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(59, 130, 246, 0.15);
+            --grid-line: rgba(255, 255, 255, 0.015);
+            --status-online: #f97316;
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --speed: 0.28s;
+            --speed: 0.2s;
             --container-max-width: 1080px;
         }
 
@@ -83,27 +88,30 @@
             --bg-card-hover: #ffffff;
             --hero-card-bg: #ffffff;
             --avatar-disk-bg: #e2e8f0;
-            --hero-card-shadow: 0 20px 45px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            --primary: #0f172a;
-            --primary-soft: rgba(15, 23, 42, 0.08);
-            --primary-border: rgba(15, 23, 42, 0.2);
-            --accent: #334155;
-            --btn-primary-bg: #1e293b;
-            --btn-primary-glow: rgba(30, 41, 59, 0.25);
-            --btn-sec-bg: #f1f5f9;
+            --hero-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 99, 235, 0.1);
+            --primary-border: rgba(37, 99, 235, 0.25);
+            --accent: #1d4ed8;
+            --btn-primary-bg: #2563eb;
+            --btn-primary-glow: rgba(37, 99, 235, 0.3);
+            
+            --btn-sec-bg: #ffffff;
             --btn-sec-text: #0f172a;
             --btn-sec-border: #cbd5e1;
+            --btn-sec-hover-bg: #f1f5f9;
+
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-glass: rgba(0, 0, 0, 0.08);
-            --border-highlight: rgba(15, 23, 42, 0.35);
+            --border-highlight: rgba(37, 99, 235, 0.45);
             --dock-bg: rgba(255, 255, 255, 0.94);
-            --dock-shadow: 0 16px 36px rgba(15, 23, 42, 0.12), 0 0 20px rgba(15, 23, 42, 0.08);
-            --grid-line: rgba(15, 23, 42, 0.03);
+            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(37, 99, 235, 0.1);
+            --grid-line: rgba(0, 0, 0, 0.03);
         }
 
         /* ==========================================================================
-           2. التهيئة الأساسية وتحسينات الأداء (Reset & GPU Optimization)
+           2. التهيئة الأساسية وتحسينات الأداء للشبكات الضعيفة (Reset & Performance)
            ========================================================================== */
         *,
         *::before,
@@ -111,6 +119,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         html {
@@ -128,13 +137,7 @@
             min-height: 100dvh;
             display: flex;
             flex-direction: column;
-            background-image:
-                radial-gradient(circle at 85% 10%, rgba(148, 163, 184, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 15% 90%, rgba(100, 116, 139, 0.06) 0%, transparent 45%),
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
-            -webkit-tap-highlight-color: transparent;
+            will-change: background-color;
             transition: background-color var(--speed) ease, color var(--speed) ease;
         }
 
@@ -165,13 +168,12 @@
             justify-content: space-between;
             align-items: center;
             background: var(--header-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: background-color var(--speed) ease, border-color var(--speed) ease;
         }
 
         .header-left,
@@ -192,16 +194,10 @@
             font-family: 'JetBrains Mono', monospace;
             direction: ltr !important;
             letter-spacing: -0.5px;
-            transition: transform var(--speed) var(--ease-out-expo);
-        }
-
-        .brand-logo:hover {
-            transform: translate3d(0, -1px, 0);
         }
 
         .brand-logo span {
-            color: var(--text-muted);
-            text-shadow: 0 0 12px rgba(148, 163, 184, 0.3);
+            color: var(--primary);
         }
 
         .action-btn {
@@ -214,17 +210,13 @@
             border-radius: 99px;
             cursor: pointer;
             font-weight: 600;
-            transition:
-                transform var(--speed) var(--ease-out-expo),
-                border-color var(--speed) ease,
-                color var(--speed) ease,
-                background-color var(--speed) ease;
+            transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
         }
 
         .action-btn:hover {
             border-color: var(--border-highlight);
             color: var(--primary);
-            transform: translate3d(0, -1px, 0);
+            transform: translateY(-1px);
         }
 
         .theme-toggle-btn {
@@ -267,28 +259,21 @@
             width: 100%;
             min-height: calc(100vh - 160px);
             padding: 40px 8% 130px;
-            contain: layout style;
         }
 
         .page-section.active {
             display: flex;
             flex-direction: column;
-            animation: pageFadeIn 0.35s var(--ease-out-expo) forwards;
+            animation: fadeIn 0.25s ease forwards;
         }
 
-        @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 12px, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ==========================================================================
-           5. البطاقة التعريفية بالصفحة الرئيسية (Hero Card)
+           5. البطاقة التعريفية بالصفحة الرئيسية الثابتة (Hero Card Layout Fix)
            ========================================================================== */
         .kekfa-hero-card {
             width: 100%;
@@ -304,7 +289,6 @@
             gap: 40px;
             position: relative;
             box-shadow: var(--hero-card-shadow);
-            transition: background-color var(--speed) ease, border-color var(--speed) ease, box-shadow var(--speed) ease;
         }
 
         @media (min-width: 993px) {
@@ -314,7 +298,8 @@
         }
 
         .kekfa-text-side {
-            flex: 1.2;
+            flex: 1 1 520px; /* ضمان عرض ثابت ومستقر بغض النظر عن طول النصوص واللغة */
+            min-width: 0;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -326,7 +311,7 @@
             align-items: center;
             gap: 6px;
             background: var(--primary-soft);
-            color: var(--text-main);
+            color: var(--primary);
             border: 1px solid var(--primary-border);
             padding: 4px 12px;
             border-radius: 99px;
@@ -342,26 +327,25 @@
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 6px;
-            letter-spacing: -0.3px;
         }
 
         .kekfa-name {
-            font-size: clamp(44px, 5.2vw, 64px);
+            font-size: clamp(38px, 4.8vw, 60px); /* ضبط الخط ليتكيف بنعومة وثبات مع اللغات المختلفة */
             font-weight: 900;
             color: var(--text-main);
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 18px;
-            letter-spacing: -1px;
+            word-break: normal;
         }
 
         .kekfa-name .highlight-name {
-            color: var(--text-muted);
-            text-shadow: 0 0 20px rgba(148, 163, 184, 0.25);
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
         }
 
         .kekfa-subroles {
             color: var(--text-muted);
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 500;
             margin-bottom: 35px;
             display: flex;
@@ -373,7 +357,6 @@
         .kekfa-subroles .divider {
             color: var(--border-glass);
             font-weight: 300;
-            user-select: none;
         }
 
         .kekfa-buttons-row {
@@ -381,6 +364,7 @@
             align-items: center;
             gap: 16px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
         .kekfa-btn {
@@ -390,29 +374,23 @@
             padding: 12px 28px;
             border-radius: 99px;
             cursor: pointer;
-            transition:
-                transform var(--speed) var(--ease-out-expo),
-                box-shadow var(--speed) var(--ease-out-expo),
-                border-color var(--speed) ease,
-                background-color var(--speed) ease,
-                filter var(--speed) ease;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             border: none;
+            white-space: nowrap;
         }
 
         .kekfa-btn-primary {
             background-color: var(--btn-primary-bg);
             color: #ffffff;
             box-shadow: 0 8px 24px var(--btn-primary-glow);
-            border: 1px solid var(--border-glass);
         }
 
         .kekfa-btn-primary:hover {
-            box-shadow: 0 12px 30px var(--btn-primary-glow);
-            transform: translate3d(0, -2px, 0);
+            transform: translateY(-2px);
             filter: brightness(1.1);
         }
 
@@ -423,8 +401,8 @@
         }
 
         .kekfa-btn-secondary:hover {
-            border-color: var(--border-highlight);
-            transform: translate3d(0, -2px, 0);
+            background-color: var(--btn-sec-hover-bg);
+            transform: translateY(-2px);
         }
 
         .kekfa-footer-badge {
@@ -442,11 +420,11 @@
             border-radius: 50%;
             background-color: var(--status-online);
             display: inline-block;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
         }
 
         .kekfa-avatar-side {
-            flex: 0.95;
+            flex: 0 0 320px; /* ضمان حجم ثابت للأفاتار لعدم حدوث أي انكماش أو تمدد */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -462,9 +440,8 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border-glass);
-            will-change: transform;
             animation: floatSlow 6s ease-in-out infinite;
         }
 
@@ -474,37 +451,11 @@
             object-fit: cover;
             display: block;
             border-radius: 50%;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-
-        .kekfa-avatar-disk:hover img {
-            transform: scale(1.05);
         }
 
         @keyframes floatSlow {
-            0%, 100% { transform: translate3d(0, 0, 0); }
-            50% { transform: translate3d(0, -7px, 0); }
-        }
-
-        /* موازنة الخط بالإنجليزية لمنع تغير حجم البطاقة */
-        :root[lang="en"] .kekfa-greeting {
-            font-size: 22px;
-        }
-
-        :root[lang="en"] .kekfa-name {
-            font-size: clamp(38px, 4.8vw, 58px);
-            margin-bottom: 15px;
-        }
-
-        :root[lang="en"] .kekfa-subroles {
-            font-size: 16px;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        :root[lang="en"] .kekfa-btn {
-            padding: 12px 24px;
-            font-size: 14px;
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
         }
 
         /* ==========================================================================
@@ -520,7 +471,7 @@
         }
 
         .section-title i {
-            color: var(--text-main);
+            color: var(--primary);
             background: var(--primary-soft);
             padding: 10px;
             border-radius: 12px;
@@ -543,19 +494,14 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            contain: content;
-            transition:
-                transform var(--speed) var(--ease-out-expo),
-                background-color var(--speed) ease,
-                border-color var(--speed) ease,
-                box-shadow var(--speed) ease;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
         }
 
         .card:hover {
-            transform: translate3d(0, -4px, 0);
+            transform: translateY(-4px);
             background: var(--bg-card-hover);
             border-color: var(--border-highlight);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .card-meta {
@@ -581,7 +527,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            color: var(--text-main);
+            color: var(--primary);
         }
 
         .card h3 {
@@ -601,15 +547,13 @@
             align-items: center;
             gap: 8px;
             margin-top: auto;
-            color: var(--text-main);
+            color: var(--primary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: opacity 0.2s;
         }
 
         .project-link:hover {
-            opacity: 0.8;
             text-decoration: underline;
         }
 
@@ -622,7 +566,7 @@
         }
 
         /* ==========================================================================
-           7. قسم التواصل مع تمركز خانة الفيسبوك بالمنتصف (Contact Section)
+           7. قسم التواصل (Contact Section)
            ========================================================================== */
         .contact-content {
             display: flex;
@@ -640,7 +584,6 @@
             margin-bottom: 35px;
         }
 
-        /* شبكة من 6 أعمدة لوضع 3 أزرار في الصف الأول وتوسيط الفيسبوك تماماً في الصف الثاني */
         .social-links {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -663,24 +606,17 @@
             font-weight: 600;
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
-            transition:
-                transform var(--speed) var(--ease-out-expo),
-                box-shadow var(--speed) ease,
-                border-color var(--speed) ease,
-                background-color var(--speed) ease,
-                color var(--speed) ease;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        /* وضع خانة الفيسبوك في المنتصف تماماً أسفل اليوتيوب */
         .social-btn.facebook {
             grid-column: 3 / 5;
         }
 
         .social-btn:hover {
-            transform: translate3d(0, -3px, 0);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-            border-color: var(--border-highlight);
-            color: var(--text-main);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         /* ==========================================================================
@@ -690,13 +626,13 @@
             position: fixed;
             bottom: 24px;
             left: 50%;
-            transform: translate3d(-50%, 0, 0);
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             gap: 6px;
             background: var(--dock-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-glass);
             border-radius: 99px;
             padding: 6px 8px;
@@ -717,10 +653,7 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            transition:
-                background-color var(--speed) ease,
-                color var(--speed) ease,
-                box-shadow var(--speed) ease;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
         .nav-dock-btn:hover {
@@ -729,9 +662,9 @@
         }
 
         .nav-dock-btn.active {
-            background: var(--btn-primary-bg);
+            background: var(--primary);
             color: #ffffff;
-            box-shadow: 0 0 16px rgba(148, 163, 184, 0.3);
+            box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
         }
 
         /* ==========================================================================
@@ -753,10 +686,7 @@
                 align-items: center !important;
                 text-align: center !important;
                 width: 100%;
-            }
-
-            .kekfa-greeting {
-                font-size: 20px;
+                flex: 1 1 100%;
             }
 
             .kekfa-name {
@@ -765,20 +695,17 @@
             }
 
             .kekfa-subroles {
-                font-size: 15px;
                 justify-content: center;
                 margin-bottom: 25px;
-                gap: 8px;
             }
 
             .kekfa-buttons-row {
                 justify-content: center;
-                margin-bottom: 30px;
                 width: 100%;
             }
 
-            .kekfa-footer-badge {
-                justify-content: center;
+            .kekfa-avatar-side {
+                flex: 0 0 auto;
             }
 
             .kekfa-avatar-disk {
@@ -810,7 +737,6 @@
                 width: 100%;
             }
 
-            /* الحفاظ على تمركز الفيسبوك في المنتصف حتى على شاشات الموبايل */
             .social-links {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -819,27 +745,11 @@
                 grid-column: span 1;
             }
 
-            .social-btn.instagram {
-                grid-column: 1 / -1;
-                width: 65%;
-                justify-self: center;
-            }
-
+            .social-btn.instagram,
             .social-btn.facebook {
                 grid-column: 1 / -1;
                 width: 65%;
                 justify-self: center;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
             }
         }
     </style>
@@ -848,7 +758,7 @@
 
     <header class="site-header">
         <div class="header-left">
-            <a href="#home" class="brand-logo" data-nav="home">mr<span>kekfa</span></a>
+            <a href="#" class="brand-logo" data-nav="home">mr<span>kekfa</span></a>
         </div>
 
         <div class="header-actions">
@@ -915,8 +825,8 @@
                             alt="Haidara Omran Avatar"
                             width="320"
                             height="320"
+                            loading="lazy"
                             decoding="async"
-                            fetchpriority="high"
                             id="heroAvatarImg"
                         >
                     </div>
@@ -977,7 +887,7 @@
                         <span class="card-number">04</span>
                     </div>
                     <h3 data-i18n="ach4_title">برمجة الأنظمة بلغة C++</h3>
-                    <p data-i18n="ach4_desc">دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).</p>
+                    <p data-i18n="ach4_desc">دراسة المفاهيم البرمجية المتقدمة عبر C++, وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).</p>
                 </article>
 
                 <article class="card">
@@ -1063,7 +973,7 @@
             const VALID_PAGES = new Set(['home', 'projects', 'achievements', 'contact']);
 
             const FALLBACK_AVATAR =
-                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231e293b'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%2394a3b8' opacity='0.85'/%3E%3Cpath d='M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z' fill='%2394a3b8' opacity='0.85'/%3E%3C/svg%3E";
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%2327272a'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%233b82f6' opacity='0.85'/%3E%3Cpath d='M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z' fill='%233b82f6' opacity='0.85'/%3E%3C/svg%3E";
 
             const TRANSLATIONS = {
                 ar: {
@@ -1175,7 +1085,7 @@
                 dom.root.setAttribute('data-theme', theme);
                 const isLight = theme === 'light';
                 dom.themeIcon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#0f172a');
+                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#121212');
             }
 
             function applyLanguage(lang, save = false) {
@@ -1207,7 +1117,6 @@
                     if (!response.ok) throw new Error('Network response was not ok');
                     const allRepos = await response.json();
 
-                    // استثناء مستودعات الموقع الشخصي والتسجيل (mrkekfa و register)
                     const filteredRepos = allRepos.filter(repo => {
                         const nameLower = repo.name.toLowerCase();
                         return nameLower !== 'mrkekfa' && nameLower !== 'register';
@@ -1224,7 +1133,7 @@
                         card.className = 'card';
                         
                         const numStr = String(index + 1).padStart(2, '0');
-                        const langText = repo.language ? `<span style="font-size:12px; font-family:JetBrains Mono,monospace; color:var(--text-main); background:var(--primary-soft); padding:2px 8px; border-radius:6px; border:1px solid var(--border-glass);">${repo.language}</span>` : '';
+                        const langText = repo.language ? `<span style="font-size:12px; font-family:JetBrains Mono,monospace; color:var(--primary); background:var(--primary-soft); padding:2px 8px; border-radius:6px; border:1px solid var(--primary-border);">${repo.language}</span>` : '';
                         const descText = repo.description ? repo.description : (currentLang === 'ar' ? 'لا يوجد وصف مضاف لهذا المشروع.' : 'No description provided.');
                         const starsText = repo.stargazers_count > 0 ? `<span style="display:inline-flex; align-items:center; gap:4px; font-size:13px; color:var(--text-muted);"><i class="fa-solid fa-star" style="color:#eab308;"></i> ${repo.stargazers_count}</span>` : '';
 
@@ -1254,9 +1163,9 @@
                 }
             }
 
-            function switchPage(pageId) {
+            function switchPage(pageId, updateHistory = true) {
                 const targetId = VALID_PAGES.has(pageId) ? pageId : 'home';
-                if (targetId === currentPage && !document.getElementById(targetId).hidden) return;
+                if (targetId === currentPage && !document.getElementById(targetId).hidden && updateHistory) return;
                 currentPage = targetId;
 
                 for (let i = 0; i < dom.pages.length; i++) {
@@ -1277,13 +1186,22 @@
                     fetchGitHubProjects();
                 }
 
+                if (updateHistory) {
+                    if (targetId === 'home') {
+                        history.pushState(null, '', window.location.pathname);
+                    } else {
+                        history.pushState(null, '', '#' + targetId);
+                    }
+                }
+
                 if (window.scrollY > 0) {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
 
-            function getHashPage() {
-                return window.location.hash.slice(1).trim().toLowerCase() || 'home';
+            function getRoutePage() {
+                const hash = window.location.hash.slice(1).trim().toLowerCase();
+                return VALID_PAGES.has(hash) ? hash : 'home';
             }
 
             dom.avatarImg.addEventListener('error', function onAvatarError() {
@@ -1305,15 +1223,11 @@
 
                 e.preventDefault();
                 const targetPage = navTrigger.getAttribute('data-nav');
-                if (window.location.hash !== '#' + targetPage) {
-                    window.location.hash = targetPage;
-                } else {
-                    switchPage(targetPage);
-                }
+                switchPage(targetPage, true);
             });
 
-            window.addEventListener('hashchange', () => {
-                switchPage(getHashPage());
+            window.addEventListener('popstate', () => {
+                switchPage(getRoutePage(), false);
             });
 
             if (window.matchMedia) {
@@ -1326,7 +1240,7 @@
 
             applyTheme(currentTheme, false);
             applyLanguage(currentLang, false);
-            switchPage(getHashPage());
+            switchPage(getRoutePage(), false);
         })();
     </script>
 </body>
