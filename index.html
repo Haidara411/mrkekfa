@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#090d16" id="metaThemeColor">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
 
     <!-- تهيئة فورية للمظهر واللغة قبل الرسم لمنع وميض الشاشة (Zero FOUC) -->
     <script>
@@ -25,7 +25,7 @@
     </script>
 
     <!-- أيقونة الموقع (SVG Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230b1120'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3Cdefs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2338bdf8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2338bdf8'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f172a'/%3E%3Cstop offset='100%25' stop-color='%231e293b'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23e2e8f0'/%3E%3Cstop offset='100%25' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%2394a3b8' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%2394a3b8'/%3E%3C/svg%3E">
 
     <!-- تحسين محركات البحث وبطاقات المشاركة (SEO & Open Graph) -->
     <title>حيدرة عمران | mrkekfa</title>
@@ -44,31 +44,31 @@
 
     <style>
         /* ==========================================================================
-           1. المتغيرات العامة ونظام الألوان (CSS Variables & Themes)
+           1. المتغيرات العامة ونظام الألوان (رمادي جميل - Beautiful Gray/Slate Theme)
            ========================================================================== */
         :root {
-            --bg-base: #090d16;
-            --header-bg: rgba(9, 13, 22, 0.8);
-            --bg-card: rgba(20, 27, 45, 0.82);
-            --bg-card-hover: rgba(28, 39, 64, 0.96);
-            --hero-card-bg: #141923;
-            --avatar-disk-bg: #1f2737;
-            --hero-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-            --primary: #38bdf8;
-            --primary-soft: rgba(56, 189, 248, 0.1);
-            --primary-border: rgba(56, 189, 248, 0.25);
-            --accent: #818cf8;
-            --btn-primary-bg: #2563eb;
-            --btn-primary-glow: rgba(37, 99, 235, 0.45);
+            --bg-base: #0b0f19;
+            --header-bg: rgba(11, 15, 25, 0.85);
+            --bg-card: rgba(23, 31, 48, 0.82);
+            --bg-card-hover: rgba(33, 44, 68, 0.96);
+            --hero-card-bg: #151c2e;
+            --avatar-disk-bg: #1e293b;
+            --hero-card-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            --primary: #f8fafc;
+            --primary-soft: rgba(248, 250, 252, 0.1);
+            --primary-border: rgba(248, 250, 252, 0.25);
+            --accent: #cbd5e1;
+            --btn-primary-bg: #334155;
+            --btn-primary-glow: rgba(51, 65, 85, 0.5);
             --btn-sec-bg: rgba(255, 255, 255, 0.05);
-            --btn-sec-text: #e2e8f0;
+            --btn-sec-text: #f1f5f9;
             --btn-sec-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-glass: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(56, 189, 248, 0.45);
-            --dock-bg: rgba(15, 23, 42, 0.9);
-            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+            --border-highlight: rgba(248, 250, 252, 0.45);
+            --dock-bg: rgba(15, 23, 42, 0.92);
+            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(148, 163, 184, 0.12);
             --grid-line: rgba(255, 255, 255, 0.02);
             --status-online: #10b981;
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -78,28 +78,28 @@
 
         :root[data-theme="light"] {
             --bg-base: #f8fafc;
-            --header-bg: rgba(255, 255, 255, 0.85);
-            --bg-card: rgba(255, 255, 255, 0.92);
+            --header-bg: rgba(255, 255, 255, 0.88);
+            --bg-card: rgba(255, 255, 255, 0.94);
             --bg-card-hover: #ffffff;
             --hero-card-bg: #ffffff;
             --avatar-disk-bg: #e2e8f0;
-            --hero-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            --primary: #0284c7;
-            --primary-soft: rgba(2, 132, 199, 0.1);
-            --primary-border: rgba(2, 132, 199, 0.25);
-            --accent: #6366f1;
-            --btn-primary-bg: #0284c7;
-            --btn-primary-glow: rgba(2, 132, 199, 0.35);
+            --hero-card-shadow: 0 20px 45px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            --primary: #0f172a;
+            --primary-soft: rgba(15, 23, 42, 0.08);
+            --primary-border: rgba(15, 23, 42, 0.2);
+            --accent: #334155;
+            --btn-primary-bg: #1e293b;
+            --btn-primary-glow: rgba(30, 41, 59, 0.25);
             --btn-sec-bg: #f1f5f9;
-            --btn-sec-text: #1e293b;
+            --btn-sec-text: #0f172a;
             --btn-sec-border: #cbd5e1;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-glass: rgba(0, 0, 0, 0.08);
-            --border-highlight: rgba(2, 132, 199, 0.45);
-            --dock-bg: rgba(255, 255, 255, 0.92);
-            --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(2, 132, 199, 0.1);
-            --grid-line: rgba(0, 0, 0, 0.03);
+            --border-highlight: rgba(15, 23, 42, 0.35);
+            --dock-bg: rgba(255, 255, 255, 0.94);
+            --dock-shadow: 0 16px 36px rgba(15, 23, 42, 0.12), 0 0 20px rgba(15, 23, 42, 0.08);
+            --grid-line: rgba(15, 23, 42, 0.03);
         }
 
         /* ==========================================================================
@@ -129,8 +129,8 @@
             display: flex;
             flex-direction: column;
             background-image:
-                radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 15% 90%, rgba(129, 140, 248, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 10%, rgba(148, 163, 184, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 15% 90%, rgba(100, 116, 139, 0.06) 0%, transparent 45%),
                 linear-gradient(var(--grid-line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
@@ -200,8 +200,8 @@
         }
 
         .brand-logo span {
-            color: var(--primary);
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+            color: var(--text-muted);
+            text-shadow: 0 0 12px rgba(148, 163, 184, 0.3);
         }
 
         .action-btn {
@@ -326,7 +326,7 @@
             align-items: center;
             gap: 6px;
             background: var(--primary-soft);
-            color: var(--primary);
+            color: var(--text-main);
             border: 1px solid var(--primary-border);
             padding: 4px 12px;
             border-radius: 99px;
@@ -355,8 +355,8 @@
         }
 
         .kekfa-name .highlight-name {
-            color: var(--primary);
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+            color: var(--text-muted);
+            text-shadow: 0 0 20px rgba(148, 163, 184, 0.25);
         }
 
         .kekfa-subroles {
@@ -407,6 +407,7 @@
             background-color: var(--btn-primary-bg);
             color: #ffffff;
             box-shadow: 0 8px 24px var(--btn-primary-glow);
+            border: 1px solid var(--border-glass);
         }
 
         .kekfa-btn-primary:hover {
@@ -461,7 +462,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.15);
             border: 1px solid var(--border-glass);
             will-change: transform;
             animation: floatSlow 6s ease-in-out infinite;
@@ -507,7 +508,7 @@
         }
 
         /* ==========================================================================
-           6. قسم الإنجازات (Achievements Section)
+           6. قسم الإنجازات والمشاريع (Achievements & Projects Sections)
            ========================================================================== */
         .section-title {
             font-size: 30px;
@@ -519,7 +520,7 @@
         }
 
         .section-title i {
-            color: var(--primary);
+            color: var(--text-main);
             background: var(--primary-soft);
             padding: 10px;
             border-radius: 12px;
@@ -580,7 +581,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            color: var(--primary);
+            color: var(--text-main);
         }
 
         .card h3 {
@@ -593,6 +594,31 @@
             color: var(--text-muted);
             font-size: 14.5px;
             line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .projects-loading, .projects-error {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 16px;
         }
 
         /* ==========================================================================
@@ -653,29 +679,8 @@
         .social-btn:hover {
             transform: translate3d(0, -3px, 0);
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-        }
-
-        .social-btn.github:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .social-btn.youtube:hover {
-            background: rgba(239, 68, 68, 0.12);
-            border-color: #ef4444;
-            color: #ef4444;
-        }
-
-        .social-btn.instagram:hover {
-            background: rgba(236, 72, 153, 0.12);
-            border-color: #ec4899;
-            color: #ec4899;
-        }
-
-        .social-btn.facebook:hover {
-            background: rgba(59, 130, 246, 0.12);
-            border-color: #3b82f6;
-            color: #3b82f6;
+            border-color: var(--border-highlight);
+            color: var(--text-main);
         }
 
         /* ==========================================================================
@@ -724,9 +729,9 @@
         }
 
         .nav-dock-btn.active {
-            background: var(--primary);
+            background: var(--btn-primary-bg);
             color: #ffffff;
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 16px rgba(148, 163, 184, 0.3);
         }
 
         /* ==========================================================================
@@ -889,8 +894,8 @@
                     </div>
 
                     <div class="kekfa-buttons-row">
-                        <button type="button" class="kekfa-btn kekfa-btn-primary" data-nav="achievements" data-i18n="btnProjects">
-                            تصفح الإنجازات
+                        <button type="button" class="kekfa-btn kekfa-btn-primary" data-nav="projects" data-i18n="btnProjects">
+                            مشاريع غيت هاب
                         </button>
                         <button type="button" class="kekfa-btn kekfa-btn-secondary" data-nav="contact" data-i18n="btnContact">
                             تواصل معي
@@ -916,6 +921,18 @@
                         >
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- المشاريع المربوطة بـ GitHub -->
+        <section id="projects" class="page-section" role="tabpanel" aria-labelledby="tab-projects" hidden>
+            <h2 class="section-title">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <span data-i18n="projectsTitle">مشاريع غيت هاب</span>
+            </h2>
+
+            <div class="grid-container" id="githubProjectsContainer">
+                <div class="projects-loading" data-i18n="loadingProjects">جاري جلب المشاريع من غيت هاب...</div>
             </div>
         </section>
 
@@ -1020,6 +1037,10 @@
             <i class="fa-solid fa-house" aria-hidden="true"></i>
             <span data-i18n="navHome">الرئيسية</span>
         </button>
+        <button type="button" id="tab-projects" class="nav-dock-btn" data-nav="projects" role="tab" aria-selected="false" aria-controls="projects">
+            <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
+            <span data-i18n="navProjects">المشاريع</span>
+        </button>
         <button type="button" id="tab-achievements" class="nav-dock-btn" data-nav="achievements" role="tab" aria-selected="false" aria-controls="achievements">
             <i class="fa-solid fa-trophy" aria-hidden="true"></i>
             <span data-i18n="navAchievements">الإنجازات</span>
@@ -1039,10 +1060,10 @@
                 LANG: 'site_lang'
             };
 
-            const VALID_PAGES = new Set(['home', 'achievements', 'contact']);
+            const VALID_PAGES = new Set(['home', 'projects', 'achievements', 'contact']);
 
             const FALLBACK_AVATAR =
-                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231f2737'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%2338bdf8' opacity='0.85'/%3E%3Cpath d='M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z' fill='%2338bdf8' opacity='0.85'/%3E%3C/svg%3E";
+                "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231e293b'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%2394a3b8' opacity='0.85'/%3E%3Cpath d='M35 170 C35 130 65 120 100 120 C135 120 165 130 165 170 Z' fill='%2394a3b8' opacity='0.85'/%3E%3C/svg%3E";
 
             const TRANSLATIONS = {
                 ar: {
@@ -1054,9 +1075,13 @@
                     role1: 'مبرمج C++',
                     role2: 'أنظمة تشغيل ولينكس',
                     role3: 'صيانة وتعديل عتاد',
-                    btnProjects: 'تصفح الإنجازات',
+                    btnProjects: 'مشاريع غيت هاب',
                     btnContact: 'تواصل معي',
                     kekfaFooter: 'صنع بواسطة mrkekfa',
+                    projectsTitle: 'مشاريع غيت هاب',
+                    loadingProjects: 'جاري جلب المشاريع من غيت هاب...',
+                    errorLoadingProjects: 'تعذر جلب المشاريع حالياً. يمكنك زيارة حسابك على غيت هاب مباشرة.',
+                    noProjects: 'لا توجد مشاريع إضافية حالياً.',
                     achievementsTitle: 'أبرز إنجازاتي',
                     ach1_title: 'تبديل بايوس كرومبوك',
                     ach1_desc: 'التعامل مع الهاردوير وتفليش وتعديل أنظمة الإقلاع الأساسية (BIOS) لأجهزة Chromebook بنجاح.',
@@ -1065,7 +1090,7 @@
                     ach3_title: 'تثبيت لينكس واحترافه',
                     ach3_desc: 'تثبيت وتخصيص توزيعات Linux مفتوحة المصدر، واحتراف العمل عبر سطر الأوامر وإدارة الحزم.',
                     ach4_title: 'برمجة الأنظمة بلغة C++',
-                    ach4_desc: 'دراسة المفاهيم البرمجية المتقدمة عبر C++، وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).',
+                    ach4_desc: 'دراسة المفاهيم البرمجية المتقدمة عبر C++, وفهم إدارة الذاكرة وتطبيق مفاهيم البرمجة الكائنية (OOP).',
                     ach5_title: 'تأمين شبكة الراوتر',
                     ach5_desc: 'تطبيق إعدادات جدار الحماية وسد المنافذ غير الضرورية لحماية الشبكة المنزلية من أي محاولات اختراق.',
                     ach6_title: 'تثبيت Custom ROM',
@@ -1073,6 +1098,7 @@
                     contactTitle: 'تواصل معي',
                     contactDesc: 'يمكنك متابعة المحتوى الذي أقدمه أو التواصل معي مباشرة عبر الروابط التالية.',
                     navHome: 'الرئيسية',
+                    navProjects: 'المشاريع',
                     navAchievements: 'الإنجازات',
                     navContact: 'تواصل'
                 },
@@ -1085,9 +1111,13 @@
                     role1: 'C++ Programmer',
                     role2: 'Linux & OS Tinkerer',
                     role3: 'Hardware Tech',
-                    btnProjects: 'Explore Achievements',
+                    btnProjects: 'GitHub Projects',
                     btnContact: 'Contact Me',
                     kekfaFooter: 'Made By Mrkekfa',
+                    projectsTitle: 'GitHub Projects',
+                    loadingProjects: 'Loading projects from GitHub...',
+                    errorLoadingProjects: 'Failed to fetch projects. Please visit your GitHub profile directly.',
+                    noProjects: 'No additional public repositories found.',
                     achievementsTitle: 'Top Achievements',
                     ach1_title: 'Chromebook BIOS Flashing',
                     ach1_desc: 'Hands-on experience modifying hardware and successfully flashing custom BIOS on Chromebooks.',
@@ -1104,6 +1134,7 @@
                     contactTitle: 'Get in Touch',
                     contactDesc: 'Feel free to check out my content or reach out directly through the platforms below.',
                     navHome: 'Home',
+                    navProjects: 'Projects',
                     navAchievements: 'Achievements',
                     navContact: 'Contact'
                 }
@@ -1128,12 +1159,14 @@
                 avatarImg: document.getElementById('heroAvatarImg'),
                 i18nNodes: document.querySelectorAll('[data-i18n]'),
                 pages: document.querySelectorAll('.page-section'),
-                dockBtns: document.querySelectorAll('.nav-dock-btn')
+                dockBtns: document.querySelectorAll('.nav-dock-btn'),
+                githubContainer: document.getElementById('githubProjectsContainer')
             };
 
             let currentTheme = dom.root.getAttribute('data-theme') || 'dark';
             let currentLang = dom.root.lang || 'ar';
             let currentPage = 'home';
+            let githubLoaded = false;
 
             function applyTheme(theme, save = false) {
                 currentTheme = theme;
@@ -1142,7 +1175,7 @@
                 dom.root.setAttribute('data-theme', theme);
                 const isLight = theme === 'light';
                 dom.themeIcon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#090d16');
+                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#0f172a');
             }
 
             function applyLanguage(lang, save = false) {
@@ -1166,6 +1199,61 @@
                 }
             }
 
+            async function fetchGitHubProjects() {
+                if (githubLoaded) return;
+                const dict = TRANSLATIONS[currentLang];
+                try {
+                    const response = await fetch('https://api.github.com/users/Haidara411/repos?sort=updated&per_page=20');
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const allRepos = await response.json();
+
+                    // استثناء مستودعات الموقع الشخصي والتسجيل (mrkekfa و register)
+                    const filteredRepos = allRepos.filter(repo => {
+                        const nameLower = repo.name.toLowerCase();
+                        return nameLower !== 'mrkekfa' && nameLower !== 'register';
+                    });
+
+                    if (!filteredRepos || filteredRepos.length === 0) {
+                        dom.githubContainer.innerHTML = `<div class="projects-error">${dict.noProjects}</div>`;
+                        return;
+                    }
+
+                    dom.githubContainer.innerHTML = '';
+                    filteredRepos.forEach((repo, index) => {
+                        const card = document.createElement('article');
+                        card.className = 'card';
+                        
+                        const numStr = String(index + 1).padStart(2, '0');
+                        const langText = repo.language ? `<span style="font-size:12px; font-family:JetBrains Mono,monospace; color:var(--text-main); background:var(--primary-soft); padding:2px 8px; border-radius:6px; border:1px solid var(--border-glass);">${repo.language}</span>` : '';
+                        const descText = repo.description ? repo.description : (currentLang === 'ar' ? 'لا يوجد وصف مضاف لهذا المشروع.' : 'No description provided.');
+                        const starsText = repo.stargazers_count > 0 ? `<span style="display:inline-flex; align-items:center; gap:4px; font-size:13px; color:var(--text-muted);"><i class="fa-solid fa-star" style="color:#eab308;"></i> ${repo.stargazers_count}</span>` : '';
+
+                        card.innerHTML = `
+                            <div class="card-meta">
+                                <div class="card-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    ${starsText}
+                                    <span class="card-number">${numStr}</span>
+                                </div>
+                            </div>
+                            <h3>${repo.name}</h3>
+                            <p>${descText}</p>
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:10px;">
+                                ${langText}
+                                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                    <span>${currentLang === 'ar' ? 'عرض على غيت هاب' : 'View on GitHub'}</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        `;
+                        dom.githubContainer.appendChild(card);
+                    });
+                    githubLoaded = true;
+                } catch (err) {
+                    dom.githubContainer.innerHTML = `<div class="projects-error">${dict.errorLoadingProjects}</div>`;
+                }
+            }
+
             function switchPage(pageId) {
                 const targetId = VALID_PAGES.has(pageId) ? pageId : 'home';
                 if (targetId === currentPage && !document.getElementById(targetId).hidden) return;
@@ -1183,6 +1271,10 @@
                     const isTarget = btn.getAttribute('data-nav') === targetId;
                     btn.classList.toggle('active', isTarget);
                     btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+                }
+
+                if (targetId === 'projects') {
+                    fetchGitHubProjects();
                 }
 
                 if (window.scrollY > 0) {
