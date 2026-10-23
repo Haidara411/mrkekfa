@@ -12,8 +12,9 @@
                 var savedTheme = localStorage.getItem('site_theme');
                 var theme = savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
                 document.documentElement.setAttribute('data-theme', theme);
-                if (theme === 'light') {
-                    document.getElementById('metaThemeColor').setAttribute('content', '#f8fafc');
+                var metaTheme = document.getElementById('metaThemeColor');
+                if (theme === 'light' && metaTheme) {
+                    metaTheme.setAttribute('content', '#f8fafc');
                 }
 
                 var savedLang = localStorage.getItem('site_lang');
@@ -35,7 +36,7 @@
     <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
     <meta property="og:image" content="Untitled25_20260814222437.jpg">
 
-    <!-- تحسين تحميل الخطوط للشبكات الضعيفة (font-display: swap) -->
+    <!-- تحسين تحميل الخطوط للشبكات الضعيفة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -45,11 +46,10 @@
 
     <style>
         /* ==========================================================================
-           1. المتغيرات العامة ونظام الألوان الأصلي تماماً
+           1. المتغيرات العامة ونظام الألوان
            ========================================================================== */
         :root {
             --bg-base: #121212;
-            --header-bg: rgba(18, 18, 18, 0.85);
             --bg-card: rgba(24, 24, 27, 0.85);
             --bg-card-hover: rgba(39, 39, 42, 0.95);
             --hero-card-bg: #18181b;
@@ -61,11 +61,16 @@
             --accent: #60a5fa;
             --btn-primary-bg: #2563eb;
             --btn-primary-glow: rgba(37, 99, 235, 0.5);
-            
+
             --btn-sec-bg: rgba(255, 255, 255, 0.08);
             --btn-sec-text: #ffffff;
             --btn-sec-border: rgba(255, 255, 255, 0.2);
             --btn-sec-hover-bg: rgba(255, 255, 255, 0.15);
+
+            /* متغيرات الكبسولة العلوية المتوسطة */
+            --top-pill-bg: rgba(28, 28, 33, 0.92);
+            --top-pill-border: rgba(255, 255, 255, 0.08);
+            --top-circle-bg: #111115;
 
             --text-main: #f8fafc;
             --text-muted: #a1a1aa;
@@ -73,16 +78,12 @@
             --border-highlight: rgba(255, 255, 255, 0.4);
             --dock-bg: rgba(24, 24, 27, 0.92);
             --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(59, 130, 246, 0.15);
-            --grid-line: rgba(255, 255, 255, 0.015);
             --status-online: #f97316;
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --speed: 0.2s;
-            --container-max-width: 1080px;
         }
 
         :root[data-theme="light"] {
             --bg-base: #f8fafc;
-            --header-bg: rgba(255, 255, 255, 0.88);
             --bg-card: rgba(255, 255, 255, 0.94);
             --bg-card-hover: #ffffff;
             --hero-card-bg: #ffffff;
@@ -94,11 +95,16 @@
             --accent: #1d4ed8;
             --btn-primary-bg: #2563eb;
             --btn-primary-glow: rgba(37, 99, 235, 0.3);
-            
+
             --btn-sec-bg: #ffffff;
             --btn-sec-text: #0f172a;
             --btn-sec-border: #cbd5e1;
             --btn-sec-hover-bg: #f1f5f9;
+
+            /* متغيرات الكبسولة العلوية في الوضع النهاري */
+            --top-pill-bg: rgba(255, 255, 255, 0.94);
+            --top-pill-border: rgba(15, 23, 42, 0.1);
+            --top-circle-bg: #f1f5f9;
 
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -106,7 +112,6 @@
             --border-highlight: rgba(37, 99, 235, 0.45);
             --dock-bg: rgba(255, 255, 255, 0.94);
             --dock-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 20px rgba(37, 99, 235, 0.1);
-            --grid-line: rgba(0, 0, 0, 0.03);
         }
 
         /* ==========================================================================
@@ -136,7 +141,6 @@
             min-height: 100dvh;
             display: flex;
             flex-direction: column;
-            will-change: background-color;
             transition: background-color var(--speed) ease, color var(--speed) ease;
         }
 
@@ -158,111 +162,139 @@
         }
 
         /* ==========================================================================
-           3. الشريط العلوي (Header) مع زر التيرمينال التفاعلي
+           3. الشريط العلوي المتوسط (Centered Header Pill)
            ========================================================================== */
         .site-header {
             width: 100%;
-            padding: 15px 8%;
+            padding: 20px 5% 8px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-glass);
             position: sticky;
             top: 0;
             z-index: 100;
+            pointer-events: none;
         }
 
-        .header-left,
-        .header-actions {
-            display: flex;
+        .header-pill {
+            pointer-events: auto;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            background: var(--top-pill-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--top-pill-border);
+            padding: 8px 18px;
+            border-radius: 999px;
+            direction: ltr !important;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
         }
 
+        /* الاسم داخل الكبسولة العلوية */
         .brand-logo {
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 800;
             color: var(--text-main);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 2px;
             font-family: 'JetBrains Mono', monospace;
             direction: ltr !important;
-            letter-spacing: -0.5px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 0 4px;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+
+        .brand-logo:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
         }
 
         .brand-logo span {
             color: var(--primary);
         }
 
-        .action-btn {
+        /* زر تبديل المظهر الدائري */
+        .theme-toggle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--top-circle-bg);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: var(--btn-sec-bg);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            border-radius: 99px;
+            font-size: 15px;
             cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+            transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease;
         }
 
-        .action-btn:hover {
-            border-color: var(--border-highlight);
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: rotate(15deg);
+        }
+
+        /* زر تبديل اللغة بالإطار الأزرق المتقطع */
+        .lang-switch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 56px;
+            height: 36px;
+            padding: 0 16px;
+            border-radius: 999px;
+            background: transparent;
+            border: 1.5px dashed var(--primary);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+        }
+
+        .lang-switch-btn:hover {
+            background: var(--primary-soft);
             color: var(--primary);
             transform: translateY(-1px);
         }
 
-        .theme-toggle-btn {
+        /* زر التيرمينال المدمج داخل الكبسولة */
+        .terminal-trigger-btn {
             width: 38px;
             height: 38px;
-            font-size: 15px;
             border-radius: 50%;
-        }
-
-        .lang-switch-btn {
-            gap: 8px;
-            padding: 7px 16px;
-            font-size: 13px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* زر التيرمينال العلوي المطور */
-        .terminal-trigger-btn {
+            background: var(--top-circle-bg);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            font-size: 12.5px;
-            padding: 7px 14px;
-            background: var(--primary-soft);
-            color: var(--primary);
-            border-radius: 99px;
-            border: 1px solid var(--primary-border);
+            justify-content: center;
+            font-size: 13.5px;
             cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            direction: ltr;
-            transition: all 0.18s ease;
+            position: relative;
+            transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease;
         }
 
         .terminal-trigger-btn:hover {
-            background: var(--primary);
-            color: #ffffff;
-            box-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+            color: var(--primary);
+            border-color: var(--primary);
             transform: translateY(-1px);
         }
 
         .terminal-trigger-btn .term-live-dot {
-            width: 7px;
-            height: 7px;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: #22c55e;
-            box-shadow: 0 0 8px #22c55e;
+            box-shadow: 0 0 6px #22c55e;
         }
 
         /* ==========================================================================
@@ -278,7 +310,7 @@
             display: none;
             width: 100%;
             min-height: calc(100vh - 160px);
-            padding: 40px 8% 130px;
+            padding: 30px 8% 130px;
         }
 
         .page-section.active {
@@ -293,7 +325,7 @@
         }
 
         /* ==========================================================================
-           5. البطاقة التعريفية بالصفحة الرئيسية (Hero Card المتوسطة كما كانت)
+           5. البطاقة التعريفية بالصفحة الرئيسية (Hero Card)
            ========================================================================== */
         .kekfa-hero-card {
             width: 100%;
@@ -449,28 +481,6 @@
             background-color: var(--status-online);
             display: inline-block;
             box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
-        }
-
-        .hero-term-shortcut {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            border-radius: 99px;
-            background: var(--btn-sec-bg);
-            border: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            cursor: pointer;
-            direction: ltr;
-            transition: all 0.15s ease;
-        }
-
-        .hero-term-shortcut:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--primary-soft);
         }
 
         .kekfa-avatar-side {
@@ -1017,7 +1027,31 @@
 
         @media (max-width: 600px) {
             .site-header {
-                padding: 12px 5%;
+                padding: 14px 4% 6px;
+            }
+
+            .header-pill {
+                gap: 10px;
+                padding: 6px 14px;
+            }
+
+            .brand-logo {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+
+            .theme-toggle-btn,
+            .terminal-trigger-btn {
+                width: 34px;
+                height: 34px;
+                font-size: 13.5px;
+            }
+
+            .lang-switch-btn {
+                min-width: 48px;
+                height: 32px;
+                padding: 0 12px;
+                font-size: 12.5px;
             }
 
             .bottom-nav-dock {
@@ -1046,15 +1080,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .social-btn {
-                grid-column: span 1;
-            }
-
-            .social-btn.instagram,
+            .social-btn,
             .social-btn.facebook {
-                grid-column: 1 / -1;
-                width: 65%;
-                justify-self: center;
+                grid-column: span 1;
+                width: 100%;
             }
 
             .term-body {
@@ -1091,33 +1120,28 @@
         </div>
     </noscript>
 
-    <!-- الشريط العلوي -->
+    <!-- الشريط العلوي في المنتصف وبداخله الاسم والأزرار -->
     <header class="site-header">
-        <div class="header-left">
+        <div class="header-pill">
             <a href="#" class="brand-logo" data-nav="home" id="brandSignature">mr<span>kekfa</span></a>
-        </div>
 
-        <div class="header-actions">
-            <button type="button" class="action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
+            <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="تبديل المظهر">
                 <i class="fa-solid fa-sun" id="themeIcon" aria-hidden="true"></i>
             </button>
 
-            <button type="button" class="action-btn lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
-                <i class="fa-solid fa-globe" aria-hidden="true"></i>
-                <span id="langBtnText">English</span>
+            <button type="button" class="lang-switch-btn" id="langToggleBtn" aria-label="تبديل اللغة">
+                <span id="langBtnText">Ar</span>
             </button>
 
-            <!-- زر فتح التيرمينال من أي مكان في الموقع -->
-            <button type="button" class="terminal-trigger-btn" id="openTerminalBtn" title="Open Interactive Terminal (Ctrl + K)">
+            <button type="button" class="terminal-trigger-btn" id="openTerminalBtn" title="Open Interactive Terminal (Ctrl + K)" aria-label="فتح التيرمينال">
                 <span class="term-live-dot"></span>
-                <i class="fa-solid fa-terminal"></i>
-                <span>Terminal</span>
+                <i class="fa-solid fa-terminal" aria-hidden="true"></i>
             </button>
         </div>
     </header>
 
     <main>
-        <!-- الصفحة الرئيسية (متوسطة ونظيفة تماماً كما في التصميم الأصلي) -->
+        <!-- الصفحة الرئيسية -->
         <section id="home" class="page-section active" role="tabpanel" aria-labelledby="tab-home">
             <div class="kekfa-hero-card">
                 <div class="kekfa-text-side">
@@ -1155,11 +1179,6 @@
                             <span class="kekfa-status-dot" aria-hidden="true"></span>
                             <span id="footerSignature" data-i18n="kekfaFooter">صنع بواسطة mrkekfa</span>
                         </div>
-
-                        <button type="button" class="hero-term-shortcut" id="heroOpenTermBtn" title="تشغيل التيرمينال">
-                            <i class="fa-solid fa-terminal"></i>
-                            <span>root@mrkekfa:~#</span>
-                        </button>
                     </div>
                 </div>
 
@@ -1373,7 +1392,6 @@
 
             /* ==========================================================================
                1. نظام الأمان الصارم المرتبط ببصمة (mrkekfa)
-               إذا تغير أي حرف في الهوية أو تم إخفاؤها يتوقف الموقع عن العمل فوراً
                ========================================================================== */
             const _SIG_BYTES = Object.freeze([109, 114, 107, 101, 107, 102, 97]); // "mrkekfa"
             const _EXPECTED_CHECKSUM = 2888;
@@ -1468,13 +1486,12 @@
                 if (
                     style.display === 'none' ||
                     style.visibility === 'hidden' ||
-                    parseFloat(style.opacity) < 0.25 ||
+                    parseFloat(style.opacity) === 0 ||
                     parseFloat(style.fontSize) < 8
                 ) {
                     return false;
                 }
-                const rect = el.getBoundingClientRect();
-                return rect.width > 10 && rect.height > 8;
+                return true;
             }
 
             /* ==========================================================================
@@ -1493,7 +1510,7 @@
             const TRANSLATIONS = Object.freeze({
                 ar: Object.freeze({
                     pageTitle: 'حيدرة عمران | mrkekfa',
-                    btnText: 'English',
+                    btnText: 'Ar',
                     kekfaGreeting: 'مرحباً، أنا',
                     firstName: 'حيدرة',
                     lastName: 'عمران',
@@ -1529,7 +1546,7 @@
                 }),
                 en: Object.freeze({
                     pageTitle: 'Haidara Omran | mrkekfa',
-                    btnText: 'العربية',
+                    btnText: 'En',
                     kekfaGreeting: 'Hello, I am',
                     firstName: 'Haidara',
                     lastName: 'Omran',
@@ -1624,7 +1641,7 @@
                 }
 
                 const homeSection = document.getElementById('home');
-                if (homeSection && !homeSection.hidden) {
+                if (homeSection && !homeSection.hidden && homeSection.classList.contains('active')) {
                     if (!isElementVisible(heroEl) || !isElementVisible(footerEl)) {
                         triggerKernelPanic('Hero/Footer signature hidden while on home screen.');
                         return false;
@@ -1658,7 +1675,6 @@
                 terminalModal: document.getElementById('terminalModal'),
                 terminalWindow: document.getElementById('terminalWindow'),
                 openTerminalBtn: document.getElementById('openTerminalBtn'),
-                heroOpenTermBtn: document.getElementById('heroOpenTermBtn'),
                 termCloseBtn: document.getElementById('termCloseBtn'),
                 termCloseDot: document.getElementById('termCloseDot'),
                 termMinDot: document.getElementById('termMinDot'),
@@ -1673,6 +1689,13 @@
             let currentLang = dom.root.lang || 'ar';
             let currentPage = 'home';
             let githubLoaded = false;
+            let cachedRepos = [];
+
+            function escapeHtml(str) {
+                return String(str).replace(/[&<>"']/g, (m) => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                }[m]));
+            }
 
             function applyTheme(theme, save = false) {
                 if (!verifyIntegrity()) return;
@@ -1682,7 +1705,9 @@
                 dom.root.setAttribute('data-theme', theme);
                 const isLight = theme === 'light';
                 dom.themeIcon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-                dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#121212');
+                if (dom.metaTheme) {
+                    dom.metaTheme.setAttribute('content', isLight ? '#f8fafc' : '#121212');
+                }
             }
 
             function applyLanguage(lang, save = false) {
@@ -1704,6 +1729,11 @@
                         node.textContent = dict[key];
                     }
                 }
+
+                if (githubLoaded) {
+                    renderGitHubProjects();
+                }
+
                 verifyIntegrity();
             }
 
@@ -1729,7 +1759,6 @@
             }
 
             dom.openTerminalBtn.addEventListener('click', toggleTerminal);
-            dom.heroOpenTermBtn.addEventListener('click', openTerminal);
             dom.termCloseBtn.addEventListener('click', closeTerminal);
             dom.termCloseDot.addEventListener('click', closeTerminal);
             dom.termMinDot.addEventListener('click', closeTerminal);
@@ -1754,17 +1783,12 @@
             });
 
             const AVAILABLE_CMDS = [
-                'help', 'neofetch', 'whoami', 'projects', 'achievements',
-                'contact', 'verify', 'theme', 'lang', 'ls', 'pwd', 'date', 'sudo', 'clear', 'exit'
+                'help', 'neofetch', 'fastfetch', 'whoami', 'projects', 'achievements',
+                'contact', 'socials', 'verify', 'status', 'theme', 'lang',
+                'ls', 'pwd', 'date', 'echo', 'sudo', 'clear', 'cls', 'exit', 'quit'
             ];
             const cmdHistory = [];
             let historyIdx = -1;
-
-            function escapeHtml(str) {
-                return str.replace(/[&<>"']/g, (m) => ({
-                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-                }[m]));
-            }
 
             function appendTerminalLog(cmdText, outputHtml) {
                 const cmdLine = document.createElement('div');
@@ -1815,7 +1839,7 @@
   <span style="color:#f97316;">whoami</span>       : About Haidara Omran (@mrkekfa)
   <span style="color:#f97316;">projects</span>     : Open GitHub Projects tab
   <span style="color:#f97316;">achievements</span> : Open Achievements tab
-  <span style="color:#f97316;">contact</span>      : Show social links & open Contact tab
+  <span style="color:#f97316;">contact</span>      : Show social links
   <span style="color:#f97316;">verify</span>       : Verify anti-tamper security signature
   <span style="color:#f97316;">theme</span>        : Toggle Dark / Light theme
   <span style="color:#f97316;">lang</span>         : Switch Arabic / English language
@@ -1867,9 +1891,10 @@
 
                     case 'contact':
                     case 'socials':
-                        appendTerminalLog(input, `GitHub    : <a href="https://github.com/Haidara411" target="_blank" style="color:#3b82f6;">github.com/Haidara411</a>
-YouTube   : <a href="https://www.youtube.com/@mrkekfa" target="_blank" style="color:#3b82f6;">youtube.com/@mrkekfa</a>
-Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="color:#3b82f6;">instagram.com/mrkekfa</a>`);
+                        appendTerminalLog(input, `GitHub    : <a href="https://github.com/Haidara411" target="_blank" rel="noopener noreferrer" style="color:#3b82f6;">github.com/Haidara411</a>
+YouTube   : <a href="https://www.youtube.com/@mrkekfa" target="_blank" rel="noopener noreferrer" style="color:#3b82f6;">youtube.com/@mrkekfa</a>
+Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" rel="noopener noreferrer" style="color:#3b82f6;">instagram.com/mrkekfa</a>
+Facebook  : <a href="https://www.facebook.com/people/MrKekfa/61594564450058/" target="_blank" rel="noopener noreferrer" style="color:#3b82f6;">facebook.com/MrKekfa</a>`);
                         break;
 
                     case 'verify':
@@ -1974,8 +1999,53 @@ Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="c
             });
 
             /* ==========================================================================
-               4. جلب مشاريع GitHub والتنقل بين الصفحات
+               4. جلب وعرض مشاريع GitHub والتنقل بين الصفحات
                ========================================================================== */
+            function renderGitHubProjects() {
+                const dict = TRANSLATIONS[currentLang];
+                if (!cachedRepos || cachedRepos.length === 0) {
+                    dom.githubContainer.innerHTML = `<div class="projects-error">${dict.noProjects}</div>`;
+                    return;
+                }
+
+                dom.githubContainer.innerHTML = '';
+                cachedRepos.forEach((repo, index) => {
+                    const card = document.createElement('article');
+                    card.className = 'card';
+
+                    const numStr = String(index + 1).padStart(2, '0');
+                    const langText = repo.language
+                        ? `<span style="font-size:12px; font-family:JetBrains Mono,monospace; color:var(--primary); background:var(--primary-soft); padding:2px 8px; border-radius:6px; border:1px solid var(--primary-border);">${escapeHtml(repo.language)}</span>`
+                        : '<span></span>';
+                    const descText = repo.description
+                        ? escapeHtml(repo.description)
+                        : (currentLang === 'ar' ? 'لا يوجد وصف مضاف لهذا المشروع.' : 'No description provided.');
+                    const starsText = repo.stargazers_count > 0
+                        ? `<span style="display:inline-flex; align-items:center; gap:4px; font-size:13px; color:var(--text-muted);"><i class="fa-solid fa-star" style="color:#eab308;"></i> ${Number(repo.stargazers_count)}</span>`
+                        : '';
+
+                    card.innerHTML = `
+                        <div class="card-meta">
+                            <div class="card-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                ${starsText}
+                                <span class="card-number">${numStr}</span>
+                            </div>
+                        </div>
+                        <h3>${escapeHtml(repo.name)}</h3>
+                        <p>${descText}</p>
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:10px;">
+                            ${langText}
+                            <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener noreferrer" class="project-link">
+                                <span>${currentLang === 'ar' ? 'عرض على غيت هاب' : 'View on GitHub'}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    `;
+                    dom.githubContainer.appendChild(card);
+                });
+            }
+
             async function fetchGitHubProjects() {
                 if (githubLoaded || !verifyIntegrity()) return;
                 const dict = TRANSLATIONS[currentLang];
@@ -1984,47 +2054,13 @@ Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="c
                     if (!response.ok) throw new Error('Network response was not ok');
                     const allRepos = await response.json();
 
-                    const filteredRepos = allRepos.filter(repo => {
-                        const nameLower = repo.name.toLowerCase();
+                    cachedRepos = allRepos.filter(repo => {
+                        const nameLower = (repo.name || '').toLowerCase();
                         return nameLower !== 'mrkekfa' && nameLower !== 'register';
                     });
 
-                    if (!filteredRepos || filteredRepos.length === 0) {
-                        dom.githubContainer.innerHTML = `<div class="projects-error">${dict.noProjects}</div>`;
-                        return;
-                    }
-
-                    dom.githubContainer.innerHTML = '';
-                    filteredRepos.forEach((repo, index) => {
-                        const card = document.createElement('article');
-                        card.className = 'card';
-                        
-                        const numStr = String(index + 1).padStart(2, '0');
-                        const langText = repo.language ? `<span style="font-size:12px; font-family:JetBrains Mono,monospace; color:var(--primary); background:var(--primary-soft); padding:2px 8px; border-radius:6px; border:1px solid var(--primary-border);">${repo.language}</span>` : '';
-                        const descText = repo.description ? repo.description : (currentLang === 'ar' ? 'لا يوجد وصف مضاف لهذا المشروع.' : 'No description provided.');
-                        const starsText = repo.stargazers_count > 0 ? `<span style="display:inline-flex; align-items:center; gap:4px; font-size:13px; color:var(--text-muted);"><i class="fa-solid fa-star" style="color:#eab308;"></i> ${repo.stargazers_count}</span>` : '';
-
-                        card.innerHTML = `
-                            <div class="card-meta">
-                                <div class="card-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
-                                <div style="display:flex; align-items:center; gap:10px;">
-                                    ${starsText}
-                                    <span class="card-number">${numStr}</span>
-                                </div>
-                            </div>
-                            <h3>${repo.name}</h3>
-                            <p>${descText}</p>
-                            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:10px;">
-                                ${langText}
-                                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
-                                    <span>${currentLang === 'ar' ? 'عرض على غيت هاب' : 'View on GitHub'}</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        `;
-                        dom.githubContainer.appendChild(card);
-                    });
                     githubLoaded = true;
+                    renderGitHubProjects();
                 } catch (err) {
                     dom.githubContainer.innerHTML = `<div class="projects-error">${dict.errorLoadingProjects}</div>`;
                 }
@@ -2033,14 +2069,15 @@ Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="c
             function switchPage(pageId, updateHistory = true) {
                 if (!verifyIntegrity()) return;
                 const targetId = VALID_PAGES.has(pageId) ? pageId : 'home';
-                if (targetId === currentPage && !document.getElementById(targetId).hidden && updateHistory) return;
+                const targetEl = document.getElementById(targetId);
+                if (targetId === currentPage && targetEl && !targetEl.hidden && updateHistory) return;
                 currentPage = targetId;
 
                 for (let i = 0; i < dom.pages.length; i++) {
                     const page = dom.pages[i];
                     const isTarget = page.id === targetId;
-                    page.classList.toggle('active', isTarget);
                     page.hidden = !isTarget;
+                    page.classList.toggle('active', isTarget);
                 }
 
                 for (let i = 0; i < dom.dockBtns.length; i++) {
@@ -2072,43 +2109,7 @@ Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="c
                 return VALID_PAGES.has(hash) ? hash : 'home';
             }
 
-            dom.avatarImg.addEventListener('error', function onAvatarError() {<!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#121212" id="metaThemeColor">
-
-    <!-- تهيئة فورية للمظهر واللغة قبل الرسم لمنع وميض الشاشة (Zero FOUC) -->
-    <script>
-        (function () {
-            try {
-                var savedTheme = localStorage.getItem('site_theme');
-                var theme = savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-                document.documentElement.setAttribute('data-theme', theme);
-                if (theme === 'light') {
-                    document.getElementById('metaThemeColor').setAttribute('content', '#f8fafc');
-                }
-
-                var savedLang = localStorage.getItem('site_lang');
-                var lang = savedLang || ((navigator.language || 'ar').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en');
-                document.documentElement.lang = lang;
-                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            } catch (e) {}
-        })();
-    </script>
-
-    <!-- أيقونة الموقع (SVG Favicon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23121212'/%3E%3Cstop offset='100%25' stop-color='%231e1e1e'/%3E%3C/linearGradient%3E%3ClinearGradient id='neon' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%232563eb'/%3E%3C/linearGradient%3E%3Cdefs%3E%3Crect x='6' y='6' width='116' height='116' rx='32' fill='url(%23bg)' stroke='%233b82f6' stroke-width='3.5' stroke-opacity='0.35'/%3E%3Cpath d='M38 42 L64 64 L38 86' fill='none' stroke='url(%23neon)' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='74' y1='86' x2='96' y2='86' stroke='%23f8fafc' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='85' cy='46' r='6' fill='%233b82f6'/%3E%3C/svg%3E">
-
-    <!-- تحسين محركات البحث وبطاقات المشاركة (SEO & Open Graph) -->
-    <title>حيدرة عمران | mrkekfa</title>
-    <meta name="description" content="الموقع الشخصي للمطور والتقني حيدرة عمران (@mrkekfa) - برمجة C++، أنظمة تشغيل لينكس، شبكات وصيانة هاردوير.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="حيدرة عمران | mrkekfa">
-    <meta property="og:description" content="مبرمج وتقني | استكشاف الأنظمة، البرمجيات، وحل المشكلات التقنية.">
-    <meta property="og:image" content="Untitled25_20260814222437.jpg">
-
+            dom.avatarImg.addEventListener('error', function onAvatarError() {
                 this.removeEventListener('error', onAvatarError);
                 this.src = FALLBACK_AVATAR;
             });
@@ -2142,7 +2143,6 @@ Instagram : <a href="https://www.instagram.com/mrkekfa" target="_blank" style="c
                 });
             }
 
-            // المراقب الأمني المستمر
             const securityObserver = new MutationObserver(() => {
                 verifyIntegrity();
             });
